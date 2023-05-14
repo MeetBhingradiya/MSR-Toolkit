@@ -1,0 +1,73 @@
+body {
+  width: 340px;
+  background-color: #424242;
+  color: white;
+  padding: 18px;
+  margin: 0px;
+  font-size: 16px;
+}
+
+hr {
+  width: 100%;
+  margin-left: 0;
+}
+
+textarea {
+  width: 100%;
+  background: transparent;
+  color: white;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+}
+
+label {
+  display: flex;
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+}
+
+.option-wrapper {
+  margin-top: 5px;
+  display: flex;
+}
+
+.option-wrapper input {
+  margin-right: 5px;
+}
+
+.text-secondary {
+  color: #79D6B5;
+  font-size: 0.9rem;
+}
+
+.btc-code {
+  background-color: #222222;
+  width: fit-content;
+  word-break: break-word;
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.Options-Query {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 235px;
+  height: auto;
+  resize: vertical;
+}
+
+.Gap {
+  display: flex;
+  gap: 5px;
+}
+
+.Col {
+  flex-direction: column;
+}

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>MSR Toolkit</title>
+    <link rel="stylesheet" type="text/css" href="popup.css">
+    </link>
+</head>
+
+<body>
+    <a class="Head GlassEffect" id="open-reward-tasks" href="https://rewards.bing.com/" target="_blank"
+        title="Go To Microsoft Rewards">
+        <div class="Brand">
+            <div class="Icon">
+                <img src="./icons/rewards.svg" />
+            </div>
+            <div class="Title">
+                Microsoft Rewards Toolkit
+            </div>
+        </div>
+        <div class="Details">
+            <div class="Version" id="Pro-ID">
+                ABS V1.0
+            </div>
+        </div>
+    </a>
+
+    <div id="static-search-input-wrapper" class="Body BodyMargin GlassEffect">
+        <div class="SearchInputs">
+            <div class="Item ItemHeading" title="Random Search Settings">
+                <img src="https://img.icons8.com/fluency/128/search.png" alt="search" />
+                Device Search Settings
+            </div>
+            <div class="Dividelite"></div>
+            <div class="ItemWarp">
+                <div class="Item">
+                    <img src="https://img.icons8.com/fluency/128/null/imac.png" title="Desktop Search" />
+                    <input type="number" min="1" max="70" id="desktop-iterations">
+                </div>
+                <div class="Item">
+                    <img src="https://img.icons8.com/fluency/128/null/iphone13.png" title="Mobile Search" />
+                    <input type="number" min="1" max="70" id="mobile-iterations">
+                </div>
+            </div>
+            <div class="Divide"></div>
+            <div class="ItemWarp">
+                <div class="Item">
+                    <img src="https://img.icons8.com/fluency/128/null/future.png" title="Delay (ms)" />
+                    <input type="number" min="1000" max="40000" step="200" id="delay">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="Body BodyMargin GlassEffect" id="random-search-input-wrapper">
+        <div class="SearchInputs">
+            <div class="Item ItemHeading" title="Random Search Settings">
+                <img src="https://img.icons8.com/fluency/128/search.png" alt="search" />
+                Search Settings
+            </div>
+            <div class="Dividelite"></div>
+            <div class="ItemWarp">
+                <div class="Item" title="Minimum Searches">
+                    <img src="https://img.icons8.com/fluency/128/long-arrow-down.png" class="MinMax" />
+                    <input type="number" min="1" max="100" id="random-search-iterations-min">
+                </div>
+                <div class="Item" title="Maximum Searches">
+                    <img src="https://img.icons8.com/fluency/128/long-arrow-up.png" class="MinMax" />
+                    <input type="number" min="1" max="100" id="random-search-iterations-max">
+                </div>
+            </div>
+            <div class="Item ItemHeading Body-D-Margin" title="Random Delay Settings">
+                <img src="https://img.icons8.com/fluency/128/null/future.png" alt="Delay" />
+                Delay Settings
+            </div>
+            <div class="Dividelite"></div>
+            <div class="ItemWarp">
+                <div class="Item" title="Minimum Delay">
+                    <img src="https://img.icons8.com/fluency/128/long-arrow-down.png" class="MinMax" />
+                    <input type="number" min="1000" max="60000" step="1000" id="random-search-delay-min">
+                </div>
+                <div class="Item" title="Maximum Delay">
+                    <img src="https://img.icons8.com/fluency/128/long-arrow-up.png" class="MinMax" />
+                    <input type="number" min="1000" max="60000" step="1000" id="random-search-delay-max">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="GlassEffect RadioSelection">
+        <div class="Radio-Item">
+
+            <input type="radio" name="Device" id="Radio-Desktop" checked value="desktop-only">
+            <label class="Radio-btn" for="Radio-Desktop">
+                <img src="https://img.icons8.com/fluency/128/null/imac.png" title="Desktop Search" class="MinMax" />
+            </label>
+
+            <input type="radio" name="Device" id="Radio-Moblie" value="mobile-only">
+            <label class="Radio-btn" for="Radio-Moblie">
+                <img src="https://img.icons8.com/fluency/128/null/iphone13.png" title="Desktop Search" class="MinMax" />
+            </label>
+
+        </div>
+        <div class="Radio-Item">
+
+            <input type="radio" name="Device" id="Radio-Both" value="desktop-and-mobile">
+            <label class="Radio-btn" for="Radio-Both">
+                <img src="https://img.icons8.com/fluency/128/null/imac.png" title="Desktop Search" class="MinMax" />
+                <img src="https://img.icons8.com/fluency/128/null/iphone13.png" title="Desktop Search" class="MinMax" />
+            </label>
+
+            <input type="radio" name="Device" id="Radio-No-Spoofing" value="none">
+            <label class="Radio-btn" for="Radio-No-Spoofing">
+                <img src="https://img.icons8.com/fluency/128/null/search.png" title="Both Search" class="MinMax" />
+            </label>
+
+        </div>
+    </div>
+
+    <div class="GlassEffect CP Body-D-Margin">
+        <div class="Item">
+            <input type="button" value="" id="search" class="Item iconbtn iconbtn-start" title="Start Search">
+            <input type="button" value="" id="stop" class="Item iconbtn iconbtn-stop" title="Stop Search">
+            <input type="button" value="" id="reset" class="Item iconbtn iconbtn-reset" title="Reset Settings">
+            <input type="button" value="" id="Downgrade" class="Item iconbtn iconbtn-Downgrade"
+                title="Pro To Free Downgrade">
+            <input type="button" value="" id="Upgrade" class="Item iconbtn iconbtn-Upgrade" title="Free To Pro Upgrade">
+        </div>
+    </div>
+
+    <div class="GlassEffect Body Body-D-Margin" id="iteration-count-wrapper">
+        <div class="ItemWarp">
+            <div class="Item" id="Desktop-Warp">
+                <img src="https://img.icons8.com/fluency/128/null/imac.png" title="Desktop Search" class="MinMax" />
+                <div id="iteration-count-1" class="Counter"></div>
+            </div>
+            <div class="Item" id="Mobile-Warp">
+                <img src="https://img.icons8.com/fluency/128/null/iphone13.png" title="Mobile Search" class="MinMax" />
+                <div id="iteration-count-2" class="Counter"></div>
+            </div>
+            <div class="Item" id="Total-Warp" style="display: none;">
+                <img src="https://img.icons8.com/fluency/128/null/search.png" title="Total Search" class="MinMax" />
+                <div id="iteration-count-3" class="Counter"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="Options GlassEffect">
+        <label>
+            <input id="blitz-search" type="checkbox" />
+            Blitz search
+        </label>
+        <label id="Pro-Random-Search">
+            <input id="random-search" type="checkbox" disabled />
+            Random Search
+        </label>
+        <label>
+            <input id="auto-click" type="checkbox" disabled />
+            Auto Click on Quiz Answers
+        </label>
+        <label>
+            <input id="random-guesses" type="checkbox" disabled />
+            Random Guesses in Quizzes
+        </label>
+    </div>
+
+    <div class="GlassEffect Body-D-Margin SelectWarp">
+        <select id="platform-spoofing">
+            <option value="desktop-only">Desktop</option>
+            <option value="mobile-only" id="Pro-Mobile" disabled>Mobile</option>
+            <option value="desktop-and-mobile" id="Pro-Both" disabled>Both</option>
+            <option value="none" id="Pro-Spoofing" disabled>No Device Spoofing</option>
+        </select>
+    </div>
+
+    <div class="Foot GlassEffect" title="Creators & Devlopers">
+        <a href="https://Github.com/MeetBhingradiya" class="FootItem" title="MeetBhingradiya"
+            id="Pro-Github-MeetBhingradiya">
+            <img src="https://img.icons8.com/fluency/128/null/github.png" />
+        </a>
+        <a href="https://github.com/mikeyaworski" class="FootItem" title="mikeyaworski" id="Pro-Github-Mikeyaworski">
+            <img src="https://img.icons8.com/fluency/128/null/github.png" />
+        </a>
+        <a href="https://www.buymeacoffee.com/mikeyaworski" class="FootItem" title="mikeyaworski' Coffee"
+            id="Pro-Coffee-Mikeyaworski">
+            <img src="https://img.icons8.com/fluency/128/null/coffee-to-go.png" />
+        </a>
+        <input type="button" value="" id="open-options" class="iconbtn iconbtn-settings" title="Go To Settings">
+        <a href="https://icons8.com/" class="FootItem ICON8" title="Powered by Icons8.com" id="Icon8">
+            Powered by <img src="https://img.icons8.com/fluency/128/null/icons8-new-logo.png" />
+        </a>
+    </div>
+
+
+    <script src="constants.js"></script>
+    <script src="utils.js"></script>
+    <script src="chrome-utils.js"></script>
+    <script src="popup.js"></script>
+</body>
+
+</html>
