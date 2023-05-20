@@ -167,7 +167,7 @@ a {
     margin-top: 10px;
     border-radius: var(--global-border-radius);
     padding: 10px;
-    gap: 5px;
+    gap: 10px;
 }
 
 .Options label {
@@ -177,12 +177,11 @@ a {
     align-items: center;
     gap: 10px;
     font-size: 14px;
-    font-weight: 600;
     color: var(--color);
     text-align: left;
     height: 30px;
     padding: 0px 10px;
-    border-radius: var(--global-border-radius);
+    border-radius: 5px;
 }
 
 .Options label:hover {
@@ -288,20 +287,19 @@ input[type="checkbox"] {
     height: 35px;
     outline: none;
     border: none;
+    border-radius: 50%;
 }
 
 .iconbtn:hover {
-    background-color: #9829ff30;
-    border-radius: 50%;
+    background-color: #9829ff4b;
     cursor: pointer;
-    transition: 0.5s;
 }
 
 .iconbtn:active {
     background-color: #9829ff7b;
-    border-radius: 50%;
     cursor: pointer;
-    transition: 0.5s;
+    transition: 0.4s;
+    border: #8400ff 1px solid;
 }
 
 .iconbtn img {
@@ -350,9 +348,9 @@ input[type=number]::-webkit-outer-spin-button {
 
 .SelectWarp {
     margin-top: 10px;
-    display: none;
+    display: flex;
     position: relative;
-    border-radius: 12px;
+    border-radius: 5px;
     flex-direction: column;
     gap: 10px;
 }
@@ -363,12 +361,11 @@ input[type=number]::-webkit-outer-spin-button {
     width: 100%;
     accent-color: #9729ff;
     height: 100%;
-    border-radius: 12px;
     padding: 10px;
+    border-radius: 5px;
     font-size: 14px;
-    font-weight: 600;
-    color: var(--color);
-    background: #4545455d;
+    color: #8400ff;
+    background: #11192a;
 }
 
 .SelectWarp select:hover {
@@ -431,7 +428,7 @@ input[type="radio"] {
     display: none;
 }
 
-input[type="radio"]:checked+label { 
+input[type="radio"]:checked+label {
     background: #9829ffa8;
 }
 

@@ -13,16 +13,16 @@ const constants = Object.freeze({
   }),
   CLICK_DELAY: 500,
   DEFAULT_PREFERENCES: Object.freeze({
-    desktopIterations: 35,
+    desktopIterations: 30,
     mobileIterations: 30,
     delay: 1000,
     autoClick: false,
     randomGuesses: true,
     randomSearch: false,
-    randomSearchDelayMin: 1200,
-    randomSearchDelayMax: 11800,
+    randomSearchDelayMin: 1000,
+    randomSearchDelayMax: 10000,
     randomSearchIterationsMin: 10,
-    randomSearchIterationsMax: 30,
+    randomSearchIterationsMax: 50,
     randomLettersSearch: false,
     blitzSearch: false,
     platformSpoofing: 'desktop-only',
@@ -44,8 +44,8 @@ const constants = Object.freeze({
     OPEN_URL_IN_BACKGROUND: 6, // window-variable-grabber script => content script => background script
   }),
   REWARDS_URL: 'https://account.microsoft.com/rewards/',
-  DAILY_TRENDS_API: 'https://trends.google.com/trends/api/dailytrends?geo=US',
-  NUM_DAILY_TREND_FETCHES: 10,
+  DAILY_TRENDS_API: 'https://trends.google.com/trends/api/dailytrends?geo=IN',
+  NUM_DAILY_TREND_FETCHES: 2,
   // TODO: add more mobile user agents
   MOBILE_USER_AGENTS: Object.freeze([
     'Mozilla/5.0 (Linux; Android 8.0; Pixel 2 Build/OPD3.170816.012) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Mobile Safari/537.36 Edg/86.0.622.51',

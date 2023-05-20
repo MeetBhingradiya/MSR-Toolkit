@@ -21,7 +21,7 @@
         </div>
         <div class="Details">
             <div class="Version" id="Pro-ID">
-                ABS V1.0
+                v2.3
             </div>
         </div>
     </a>
@@ -38,13 +38,13 @@
                     <img src="https://img.icons8.com/fluency/128/null/imac.png" title="Desktop Search" />
                     <input type="number" min="1" max="70" id="desktop-iterations">
                 </div>
-                <div class="Item">
+                <div class="Item" id="Pro-Static-Mobile">
                     <img src="https://img.icons8.com/fluency/128/null/iphone13.png" title="Mobile Search" />
                     <input type="number" min="1" max="70" id="mobile-iterations">
                 </div>
             </div>
-            <div class="Divide"></div>
-            <div class="ItemWarp">
+            <div class="Divide" id="Pro-Static-Divide"></div>
+            <div class="ItemWarp" style="display: none;" id="Pro-Static-Delay">
                 <div class="Item">
                     <img src="https://img.icons8.com/fluency/128/null/future.png" title="Delay (ms)" />
                     <input type="number" min="1000" max="40000" step="200" id="delay">
@@ -88,7 +88,7 @@
         </div>
     </div>
 
-    <div class="GlassEffect RadioSelection">
+    <div class="GlassEffect RadioSelection" id="Pro-Radio-Warp">
         <div class="Radio-Item">
 
             <input type="radio" name="Device" id="Radio-Desktop" checked value="desktop-only">
@@ -123,8 +123,8 @@
             <input type="button" value="" id="search" class="Item iconbtn iconbtn-start" title="Start Search">
             <input type="button" value="" id="stop" class="Item iconbtn iconbtn-stop" title="Stop Search">
             <input type="button" value="" id="reset" class="Item iconbtn iconbtn-reset" title="Reset Settings">
-            <input type="button" value="" id="Downgrade" class="Item iconbtn iconbtn-Downgrade"
-                title="Pro To Free Downgrade">
+
+            <input type="button" value="" id="Downgrade" class="Item iconbtn iconbtn-Downgrade" title="Pro To Free Downgrade">
             <input type="button" value="" id="Upgrade" class="Item iconbtn iconbtn-Upgrade" title="Free To Pro Upgrade">
         </div>
     </div>
@@ -139,7 +139,7 @@
                 <img src="https://img.icons8.com/fluency/128/null/iphone13.png" title="Mobile Search" class="MinMax" />
                 <div id="iteration-count-2" class="Counter"></div>
             </div>
-            <div class="Item" id="Total-Warp" style="display: none;">
+            <div class="Item" id="Total-Warp">
                 <img src="https://img.icons8.com/fluency/128/null/search.png" title="Total Search" class="MinMax" />
                 <div id="iteration-count-3" class="Counter"></div>
             </div>
@@ -147,30 +147,30 @@
     </div>
 
     <div class="Options GlassEffect">
-        <label>
+        <label title="Blitz Search">
             <input id="blitz-search" type="checkbox" />
-            Blitz search
+            Fast Script Injection
         </label>
         <label id="Pro-Random-Search">
-            <input id="random-search" type="checkbox" disabled />
+            <input id="random-search" type="checkbox" />
             Random Search
         </label>
         <label>
-            <input id="auto-click" type="checkbox" disabled />
+            <input id="auto-click" type="checkbox" />
             Auto Click on Quiz Answers
         </label>
         <label>
-            <input id="random-guesses" type="checkbox" disabled />
+            <input id="random-guesses" type="checkbox" />
             Random Guesses in Quizzes
         </label>
     </div>
 
-    <div class="GlassEffect Body-D-Margin SelectWarp">
+    <div class="SelectWarp GlassEffect Body-D-Margin" style="display: none;">
         <select id="platform-spoofing">
             <option value="desktop-only">Desktop</option>
-            <option value="mobile-only" id="Pro-Mobile" disabled>Mobile</option>
-            <option value="desktop-and-mobile" id="Pro-Both" disabled>Both</option>
-            <option value="none" id="Pro-Spoofing" disabled>No Device Spoofing</option>
+            <option value="mobile-only" id="Pro-Mobile">Mobile</option>
+            <option value="desktop-and-mobile" id="Pro-Both">Both</option>
+            <option value="none" id="Pro-Spoofing">OFF</option>
         </select>
     </div>
 

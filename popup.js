@@ -12,13 +12,13 @@ const DesktopWarp = document.getElementById('Desktop-Warp');
 const MobileWarp = document.getElementById('Mobile-Warp');
 const TotalWarp = document.getElementById('Total-Warp');
 
-const Version = 2.2;
-const API = 'https://api.teamsm.live';
 const ReedemEndpoint = '/Products/MSToolkit';
 const UpdateEndpoint = '/Products/MSToolkit/Version';
 
-// if we are spoofing desktop searches, show a count labelled 'desktop'. same for mobile.
-// if we are not spoofing anything, then just display an unlabelled count.
+const VER = 2.3;
+const API = 'https://api.teamsm.live';
+
+
 function setCountDisplayText({
     numIterations,
     overallCount,
@@ -42,7 +42,6 @@ function setCountDisplayText({
 
     if (containsMobile) {
         MobileWarp.style.display = 'flex';
-        // const el = containsDesktop ? iterationCount2 : iterationCount1;
         iterationCount2.innerText = `${mobileRemaining}`;
     } else {
         MobileWarp.style.display = 'none';
@@ -89,10 +88,13 @@ port.onMessage.addListener(msg => {
         default: break;
     }
 });
+
+// ? Getting Search Count
 chrome.runtime.sendMessage({
     type: constants.MESSAGE_TYPES.GET_SEARCH_COUNTS,
 });
 
+// ? Static Search and Random Search Menu Toggle
 function updateSearchInputsVisibility() {
     if (document.getElementById('random-search').checked) {
         staticSearchesWrapper.style = 'display: none;';
@@ -103,9 +105,6 @@ function updateSearchInputsVisibility() {
     }
 }
 
-// id is HTML id attribute
-// elementKey is how to get the value of that element (depends on type of input)
-// preferenceKey the is key in chrome storage and constants.DEFAULT_PREFERENCES
 const preferenceBindings = [
     { id: 'desktop-iterations', elementKey: 'value', preferenceKey: 'desktopIterations' },
     { id: 'mobile-iterations', elementKey: 'value', preferenceKey: 'mobileIterations' },
@@ -125,8 +124,6 @@ getStorage(
     preferenceBindings.map(({ id, elementKey, preferenceKey }) => ({
         key: preferenceKey,
         cb: value => {
-            // value could be false, in which case the shortcut || operator
-            // would evaluate to the default (not intended)
             document.getElementById(id)[elementKey] = value === undefined
                 ? constants.DEFAULT_PREFERENCES[preferenceKey]
                 : value;
@@ -134,6 +131,7 @@ getStorage(
     })),
 ).then(updateSearchInputsVisibility);
 
+// ? Save Any Button Action
 function saveChanges() {
     updateSearchInputsVisibility();
     const newPreferences = preferenceBindings.reduce((acc, binding) => ({
@@ -143,6 +141,7 @@ function saveChanges() {
     setStorage(newPreferences);
 }
 
+// ? Reset Button Action
 function reset(e) {
     e.preventDefault();
     if (document.getElementById('random-search').checked) {
@@ -163,26 +162,47 @@ function openOptions(e) {
     if (chrome.runtime.openOptionsPage) {
         chrome.runtime.openOptionsPage();
     } else {
-        window.open(chrome.runtime.getURL('options.html')); z
+        window.open(chrome.runtime.getURL('options.html'));
     }
 }
 
-function PlanChange() {
-    function ProFeatures() {
-        // Credentials
-        localStorage.setItem('Pro', 'true');
+// ! Pro Plan Settings
 
-        // Title
-        document.getElementById('Pro-ID').innerHTML = 'v2.2 Pro';
+function PlanChange() {
+    function Update_Title() {
+        if (localStorage.getItem('Beta') == 'true') {
+            document.getElementById('Pro-ID').innerHTML = `v${VER} Beta`;
+        } else if (localStorage.getItem('Pro') == 'true') {
+            document.getElementById('Pro-ID').innerHTML = `v${VER} Pro`;
+        } else {
+            document.getElementById('Pro-ID').innerHTML = `v${VER} Free`;
+        }
+    }
+
+    function ProFeatures() {
+        if (localStorage.getItem('Pro') !== 'true') {
+            localStorage.setItem('Pro', 'true');
+        }
+
+        document.body.style.height = "725px";
+
+        // Static Search
+        document.getElementById('Pro-Static-Delay').style.display = 'flex';
+        document.getElementById('Pro-Static-Divide').style.display = 'flex';
+        document.getElementById('Pro-Static-Mobile').style.display = 'flex';
 
         // Random Search
         document.getElementById('random-search').disabled = false;
+        document.getElementById('random-search').checked = false;
 
         // Random Guesses
         document.getElementById('random-guesses').disabled = false;
+        document.getElementById('random-guesses').checked = false;
+
 
         // Auto Click
         document.getElementById('auto-click').disabled = false;
+        document.getElementById('auto-click').checked = true;
 
         // Device
         document.getElementById('Pro-Both').disabled = false;
@@ -194,31 +214,46 @@ function PlanChange() {
         document.getElementById('Pro-Github-Mikeyaworski').style = 'display: none;';
         document.getElementById('Pro-Github-MeetBhingradiya').style = 'display: none;';
 
+        // Radio Selectors
+        document.getElementById('Pro-Radio-Warp').style.display = 'flex';
+
         // Icon8
         document.getElementById('Icon8').style.marginLeft = '217px';
 
         // Warp
         document.getElementById('Total-Warp').style.display = 'flex';
 
+        // Reset Button
+        document.getElementById('reset').style.display = 'flex';
+
         // Pro Indicators
         document.getElementById('Downgrade').style.display = 'flex';
         document.getElementById('Upgrade').style.display = 'none';
+        saveChanges();
     }
 
     function FreeFeatures() {
         // Credentials
         localStorage.removeItem('Pro');
 
-        // Title
-        document.getElementById('Pro-ID').innerHTML = 'v2.2 Free';
+        document.body.style.height = "520px";
 
+        // Static Search
+        document.getElementById('Pro-Static-Delay').style.display = 'none';
+        document.getElementById('Pro-Static-Divide').style.display = 'none';
+        document.getElementById('Pro-Static-Mobile').style.display = 'none';
+
+        // Random Search
         document.getElementById('random-search').disabled = true;
-
+        document.getElementById('random-search').checked = false;
+        
         // Random Guesses
         document.getElementById('random-guesses').disabled = true;
+        document.getElementById('random-guesses').checked = true;
 
         // Auto Click
         document.getElementById('auto-click').disabled = true;
+        document.getElementById('auto-click').checked = false;
 
         // Device
         document.getElementById('Pro-Both').disabled = true;
@@ -233,24 +268,30 @@ function PlanChange() {
         // Icon8 Margin
         document.getElementById('Icon8').style.marginLeft = '97px';
 
+        // Radio Selectors
+        document.getElementById('Pro-Radio-Warp').style.display = 'none';
+
+        // Device
+        document.getElementById('platform-spoofing').value = 'desktop-only';
+
         // Warp
         document.getElementById('Total-Warp').style.display = 'none';
+
+        // Reset Button
+        document.getElementById('reset').style.display = 'none';
 
         // Pro Indicators
         document.getElementById('Downgrade').style.display = 'none';
         document.getElementById('Upgrade').style.display = 'flex';
+        saveChanges();
     }
 
+    Update_Title();
     if (localStorage.getItem("Pro") === 'true') {
         ProFeatures();
     } else {
         FreeFeatures();
     }
-}
-
-
-function Sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function UpgradeToPro() {
@@ -261,13 +302,12 @@ async function UpgradeToPro() {
         var UserInputs = prompt('ENTER PROMOCODE', ' ');
 
         if (UserInputs === null) return;
-        
+
         const body = JSON.stringify({
             PROMO: UserInputs,
-            VER: Version,
+            VER: VER,
         })
-        
-        
+
         try {
             var API = await fetch('https://api.teamsm.live/Products/MSToolkit', {
                 method: 'POST',
@@ -278,7 +318,7 @@ async function UpgradeToPro() {
                 }
             });
             var Res = await API.json();
-            
+
             if (Res.Status === 1) {
                 localStorage.setItem('Pro', 'true');
                 PlanChange();
@@ -288,7 +328,6 @@ async function UpgradeToPro() {
                 PlanChange();
                 alert(Res?.Message ? Res?.Message : Res.message);
             }
-            
         } catch (error) {
             alert('Something Went Wrong While Connecting To Server !');
         }
@@ -298,8 +337,7 @@ async function UpgradeToPro() {
 async function DowngradeToFree() {
     if (localStorage.getItem("Pro") !== null) {
         const Comfirm = confirm('Are you sure you want to downgrade to Free version?');
-        if (!Comfirm) return;
-        
+
         if (!Comfirm) {
             return;
         } else {
@@ -329,65 +367,9 @@ const changeBindings = [
     { id: 'reset', eventType: 'click', fn: reset },
     { id: 'open-options', eventType: 'click', fn: openOptions },
     { id: 'stop', eventType: 'click', fn: stopSearches },
-    { id: 'Downgrade', eventType: 'click', fn: DowngradeToFree },
     { id: 'Upgrade', eventType: 'click', fn: UpgradeToPro },
+    { id: 'Downgrade', eventType: 'click', fn: DowngradeToFree },
 ];
-
-document.addEventListener('DOMContentLoaded', async () => {
-    document.getElementById('reset').click();
-    PlanChange();
-    (async () => {
-        var RadioBtns = document.getElementsByName('Device');
-        var Value;
-        for (var i = 0; i < RadioBtns.length; i++) {
-            if (RadioBtns[i].checked) {
-                Value = RadioBtns[i].value;
-            }
-        }
-        document.getElementById('platform-spoofing').value = Value;
-        var event = new Event('change');
-        document.getElementById('platform-spoofing').dispatchEvent(event);
-    })();
-    (async () => {
-        try {
-            var _API = `${API}${UpdateEndpoint}`
-            const Data = await fetch(_API, {
-                method: 'POST',
-                body: JSON.stringify({
-                    Version,
-                }),
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            });
-            const Res = await Data.json();
-    
-            if (Res.Status === 1) {
-            } else {
-                alert(Res?.Message ? Res?.Message : Res.message);
-            }
-        } catch (error) {
-            alert('Something Went Wrong While Connecting To Server !');
-        }
-    })()
-});
-
-document.getElementsByName("Device").forEach((e)=>{
-    e.addEventListener('click', async () => {
-        var RadioBtns = document.getElementsByName('Device');
-        var Value;
-        for (var i = 0; i < RadioBtns.length; i++) {
-            if (RadioBtns[i].checked) {
-                Value = RadioBtns[i].value;
-            }
-        }
-        document.getElementById('platform-spoofing').value = Value;
-        var event = new Event('change');
-        document.getElementById('platform-spoofing').dispatchEvent(event);
-    });
-})
-
 
 changeBindings.forEach(({ id, eventType, fn = saveChanges }) => {
     document.getElementById(id).addEventListener(eventType, fn);
@@ -431,4 +413,107 @@ document.getElementById('open-reward-tasks').addEventListener('click', async () 
             chrome.tabs.onUpdated.addListener(listener);
         });
     }
+});
+
+// ! Helpers
+function Sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const useState = (defaultValue) => {
+    let value = defaultValue;
+    const getValue = () => value
+    const setValue = newValue => value = newValue
+    return [getValue, setValue];
+}
+
+// ! Version Control System
+async function VersionControl() {
+    try {
+        var _API = `${API}${UpdateEndpoint}`
+        const Data = await fetch(_API, {
+            method: 'POST',
+            body: JSON.stringify({
+                VER,
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+        const Res = await Data.json();
+        if (Res.Status === 1) {
+            localStorage.setItem('Version', VER);
+            if (Res?.isBeta === true) {
+                localStorage.setItem('Beta', 'true');
+                alert('Warning: You are using Beta Version !');
+            } else {
+                localStorage.removeItem('Beta');
+            }
+            PlanChange();
+        } else {
+            alert(Res?.Message ? Res?.Message : Res.message);
+            localStorage.removeItem('Version');
+            PlanChange();
+        }
+    } catch (error) {
+        alert('Something Went Wrong While Checking For Updates !');
+    }
+}
+
+function Valid_RadioBtn(Value) {
+    var DesktopRadio = document.getElementById('Radio-Desktop').checked;
+    var MobileRadio = document.getElementById('Radio-Moblie').checked;
+    var BothRadio = document.getElementById('Radio-Both').checked;
+    var NoneRadio = document.getElementById('Radio-No-Spoofing').checked;
+
+    if (localStorage.getItem('Pro') !== null) {
+        if (Value === 'desktop-only') {
+            DesktopRadio = true;
+        } else if (Value === 'mobile-only') {
+            MobileRadio = true;
+        } else if (Value === 'desktop-and-mobile') {
+            BothRadio = true;
+        } else if (Value === 'none') {
+            NoneRadio = true;
+        } else {
+            DesktopRadio = true;
+        }
+        return Value;
+    } else {
+        if (Value === 'desktop-only') {
+            DesktopRadio = true;
+        } else if (Value === 'mobile-only') {
+            DesktopRadio = true;
+        } else if (Value === 'desktop-and-mobile') {
+            DesktopRadio = true;
+        } else if (Value === 'none') {
+            DesktopRadio = true;
+        } else {
+            DesktopRadio = true;
+        }
+        return 'desktop-only';
+    }
+}
+
+function Update_RadioBtn() {
+    document.getElementsByName("Device").forEach((e) => {
+        e.addEventListener('click', async () => {
+            var RadioBtns = document.getElementsByName('Device');
+            var Value;
+            for (var i = 0; i < RadioBtns.length; i++) {
+                if (RadioBtns[i].checked) {
+                    Value = RadioBtns[i].value;
+                }
+            }
+            document.getElementById('platform-spoofing').value = Valid_RadioBtn(Value);
+            saveChanges();
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    VersionControl();
+    Update_RadioBtn();
+    PlanChange();
 });
