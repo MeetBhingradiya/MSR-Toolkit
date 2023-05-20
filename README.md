@@ -19,4 +19,4 @@
 
 ## About Devlopers
 - `Maintained` [Meet Bhingradiya](https://github.com/MeetBhingradiya)
-- `Author` [mikeyaworski](https://github.com/mikeyaworski)
+- `Author` [@mikeyaworski](https://github.com/mikeyaworski)
