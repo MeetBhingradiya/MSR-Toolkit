@@ -1,5 +1,5 @@
 # Microsoft Rewards Toolkit (ABS)
-- `Latest Version` 2.3
+- `Latest Version` v2.3
 - `Release Date` 20-5-2023 6:00 PM
 
 ## Features
