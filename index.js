@@ -175,7 +175,7 @@ function PlanChange() {
         } else if (localStorage.getItem('Pro') == 'true') {
             document.getElementById('Pro-ID').innerHTML = `v${VER} Pro`;
         } else {
-            document.getElementById('Pro-ID').innerHTML = `v${VER} Free`;
+            document.getElementById('Pro-ID').innerHTML = `v${VER} Standard`;
         }
     }
 
@@ -336,17 +336,17 @@ async function UpgradeToPro() {
 
 async function DowngradeToFree() {
     if (localStorage.getItem("Pro") !== null) {
-        const Comfirm = confirm('Are you sure you want to downgrade to Free version?');
+        const Comfirm = confirm('Are you sure you want to Downgrade to Free version?');
 
         if (!Comfirm) {
             return;
         } else {
             localStorage.removeItem('Pro');
             PlanChange();
-            alert('Downgraded to Free version');
+            alert('Downgraded to Free Version !');
         }
     } else {
-        alert('You Already Have Free Version');
+        alert('You Already Have Free Version !');
         return;
     }
 }
@@ -377,10 +377,14 @@ changeBindings.forEach(({ id, eventType, fn = saveChanges }) => {
 
 function startSearches() {
     port.postMessage({ type: constants.MESSAGE_TYPES.START_SEARCH });
+    document.getElementById('search').style.display = 'none';
+    document.getElementById('stop').style.display = 'flex';
 }
 
 function stopSearches() {
     port.postMessage({ type: constants.MESSAGE_TYPES.STOP_SEARCH });
+    document.getElementById('search').style.display = 'none';
+    document.getElementById('stop').style.display = 'none';
 }
 
 chrome.commands.onCommand.addListener(command => {
@@ -513,7 +517,7 @@ function Update_RadioBtn() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    VersionControl();
+    // VersionControl();
     Update_RadioBtn();
     PlanChange();
 });
