@@ -1,0 +1,442 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+body::-webkit-scrollbar {
+    width: 3px;
+    height: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: rgba(17, 25, 40, 0.75);
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.125);
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+body::-webkit-scrollbar-button {
+    display: none;
+}
+
+:root {
+    --global-border-radius: 8px;
+    --color: #e0e0e0;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #11192a;
+    color: #fff;
+    width: 400px;
+    height: 800px;
+    overflow: auto;
+    padding: 5px;
+}
+
+.BodyMargin {
+    margin-top: 55px;
+}
+
+.Body-D-Margin {
+    margin-top: 10px;
+}
+
+.Body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    user-select: none;
+    padding: 10px;
+    border-radius: var(--global-border-radius);
+}
+
+.GlassEffect {
+    backdrop-filter: blur(2px) saturate(180%);
+    -webkit-backdrop-filter: blur(2px) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.GlassEffect:hover {
+    background-color: rgba(26, 35, 55, 0.55);
+}
+
+a {
+    text-decoration: none;
+    color: #9729ff;
+}
+
+.Head {
+    z-index: 1;
+    position: fixed;
+    top: 0px;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: calc(100% - 10px);
+    margin: 0px;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.135);
+}
+
+.Head .Brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.Head .Brand .Icon {
+    position: relative;
+    top: 3px;
+    width: 30px;
+    height: 30px;
+}
+
+.Head .Brand .Icon img {
+    width: 100%;
+    height: 100%;
+}
+
+.Head .Brand .Title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color);
+}
+
+.Head .Details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.Head .Details .Version {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.Divide,
+.Dividelite,
+.Divide-NoMargin {
+    width: 100%;
+    height: 1px;
+    background: #4545455d;
+}
+
+.Divide {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.Dividelite {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.Divide-NoMargin {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+
+#static-search-input-wrapper,
+#random-search-input-wrapper {
+    display: none;
+}
+
+#static-search-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Options {
+    margin-top: 10px;
+    border-radius: var(--global-border-radius);
+    padding: 10px;
+    gap: 10px;
+}
+
+.Options label {
+    cursor: pointer;
+    display: flex;
+    user-select: none;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--color);
+    text-align: left;
+    height: 30px;
+    padding: 0px 10px;
+    border-radius: 5px;
+}
+
+.Options label:hover {
+    background-color: rgba(255, 255, 255, 0.125);
+}
+
+.SearchInputs {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Item {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.ItemWarp {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.ItemHeading {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color);
+}
+
+.Item img {
+    width: 32px;
+    height: 32px;
+}
+
+.MinMax {
+    width: 22px;
+    height: 22px;
+}
+
+.SearchInputs input[type="number"] {
+    outline: none;
+    border: none;
+    width: 75px;
+    height: 29px;
+    padding: 5px 5px 5px 10px;
+    border-radius: 25px;
+}
+
+.SearchInputs input[type="number"]:focus {
+    border: #9729ff 2px solid;
+}
+
+input[type="checkbox"] {
+    accent-color: #9729ff;
+    width: 20px;
+    height: 20px;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    background: #4545455d;
+}
+
+.Foot {
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    border: none;
+    border-radius: var(--global-border-radius);
+    user-select: none;
+}
+
+.Foot .FootItem {
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.Foot .FootItem img {
+    width: 25px;
+    height: 25px;
+}
+
+.Foot .ICON8 {
+    margin-left: 97px;
+    color: var(--color);
+}
+
+.iconbtn {
+    padding: 5px;
+    width: 35px;
+    height: 35px;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+}
+
+.iconbtn:hover {
+    background-color: #9829ff4b;
+    cursor: pointer;
+}
+
+.iconbtn:active {
+    background-color: #9829ff7b;
+    cursor: pointer;
+    transition: 0.4s;
+    border: #8400ff 1px solid;
+}
+
+.iconbtn img {
+    width: 25px;
+    height: 25px;
+}
+
+.iconbtn-start {
+    background: url(https://img.icons8.com/fluency/128/null/play.png) no-repeat 5px center;
+    background-size: 25px;
+}
+
+.iconbtn-stop {
+    background: url(https://img.icons8.com/fluency/128/null/stop.png) no-repeat 5px center;
+    background-size: 25px;
+}
+
+.iconbtn-reset {
+    background: url(https://img.icons8.com/fluency/128/null/recurring-appointment.png) no-repeat 5px center;
+    background-size: 25px;
+}
+
+.iconbtn-settings {
+    background: url(https://img.icons8.com/fluency/128/null/settings.png) no-repeat 5px center;
+    background-size: 25px;
+}
+
+.iconbtn-Downgrade {
+    background: url(https://img.icons8.com/fluency/128/downloading-updates.png) no-repeat 5px center;
+    background-size: 25px;
+}
+
+.iconbtn-Upgrade {
+    background: url(https://img.icons8.com/fluency/128/downloading-updates.png) no-repeat 5px center;
+    background-size: 25px;
+    transform: rotate(180deg);
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.SelectWarp {
+    margin-top: 10px;
+    display: flex;
+    position: relative;
+    border-radius: 5px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.SelectWarp select {
+    outline: none;
+    border: none;
+    width: 100%;
+    accent-color: #9729ff;
+    height: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #8400ff;
+    background: #11192a;
+}
+
+.SelectWarp select:hover {
+    cursor: pointer;
+}
+
+.CP {
+    padding: 10px;
+    user-select: none;
+    border-radius: var(--global-border-radius);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.Counter {
+    margin-top: 3px;
+}
+
+.RadioSelection {
+    margin-top: 10px;
+    border-radius: 8px;
+    padding: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: left;
+    gap: 5px;
+    user-select: none;
+}
+
+.RadioSelection .MinMax {
+    width: 30px;
+    height: 30px;
+}
+
+.RadioSelection .Radio-Item {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.RadioSelection .Radio-btn {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    height: 50px;
+    border-radius: 8px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked+label {
+    background: #9829ffa8;
+}
+
+.RadioSelection .Radio-btn:hover {
+    background: #9829ff88;
+}
+
+.RadioSelection .Radio-btn:active {
+    background: #9829ffa8;
+    border: 1px solid #9829ff;
+}
