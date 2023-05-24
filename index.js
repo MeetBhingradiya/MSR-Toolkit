@@ -446,7 +446,6 @@ const changeBindings = [
 
 // ? Save Changes
 changeBindings.forEach(({ id, eventType, fn = saveChanges }) => {
-    debugger
     document.getElementById(id).addEventListener(eventType, fn);
 });
 
@@ -505,12 +504,6 @@ const useState = (defaultValue) => {
 // ! Version Control System
 async function VersionControl() {
     try {
-        const Abort = new AbortController();
-        const TimeOut = setTimeout(
-            () => Abort.abort(),
-            10000
-        )
-
         var _API = `${API}${UpdateEndpoint}`
         const Data = await fetch(_API, {
             method: 'POST',
@@ -520,8 +513,7 @@ async function VersionControl() {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            },
-            signal: Abort.signal
+            }
         });
         const Res = await Data.json();
         if (Res.Status === 1) {
@@ -533,17 +525,14 @@ async function VersionControl() {
                 localStorage.removeItem('Beta');
             }
             PlanChange();
-            clearTimeout(TimeOut);
         } else {
             alert(Res?.Message ? Res?.Message : Res.message);
             localStorage.removeItem('Version');
             PlanChange();
-            clearTimeout(TimeOut);
         }
     } catch (error) {
         alert('Something Went Wrong While Checking For Updates !');
         PlanChange();
-        clearTimeout(TimeOut);
     }
 }
 
