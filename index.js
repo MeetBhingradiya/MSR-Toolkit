@@ -1,5 +1,6 @@
 const port = chrome.runtime.connect();
 
+// ! CONSTANTS [Working in v2.4]
 const staticSearchesWrapper = document.getElementById('static-search-input-wrapper');
 const randomSearchesWrapper = document.getElementById('random-search-input-wrapper');
 
@@ -15,10 +16,16 @@ const TotalWarp = document.getElementById('Total-Warp');
 const ReedemEndpoint = '/Products/MSToolkit';
 const UpdateEndpoint = '/Products/MSToolkit/Version';
 
-const VER = 2.3;
+const VER = 2.4;
 const API = 'https://api.teamsm.live';
 
+// ! WARP END
 
+
+
+// @ OLD Auto Bing Search [ABS Script] - Modified by @TeamSM/MeetBhingradiya
+
+// ? Update Search Counts
 function setCountDisplayText({
     numIterations,
     overallCount,
@@ -62,12 +69,7 @@ function setCountDisplayText({
     }
 }
 
-const Remove_Childrens = (Parent) => {
-    while (Parent.firstChild) {
-        Parent.removeChild(Parent.firstChild);
-    }
-}
-
+// ? Clear Search Counts
 function clearCountDisplayText() {
     iterationCount1.innerText = '';
     iterationCount2.innerText = '';
@@ -75,6 +77,7 @@ function clearCountDisplayText() {
     iterationCountWrapper.style = 'display: none;';
 }
 
+// ? Message Listener
 port.onMessage.addListener(msg => {
     switch (msg.type) {
         case constants.MESSAGE_TYPES.UPDATE_SEARCH_COUNTS: {
@@ -105,6 +108,7 @@ function updateSearchInputsVisibility() {
     }
 }
 
+// ? GET Default Preferences from Config
 const preferenceBindings = [
     { id: 'desktop-iterations', elementKey: 'value', preferenceKey: 'desktopIterations' },
     { id: 'mobile-iterations', elementKey: 'value', preferenceKey: 'mobileIterations' },
@@ -118,8 +122,10 @@ const preferenceBindings = [
     { id: 'platform-spoofing', elementKey: 'value', preferenceKey: 'platformSpoofing' },
     { id: 'random-search', elementKey: 'checked', preferenceKey: 'randomSearch' },
     { id: 'blitz-search', elementKey: 'checked', preferenceKey: 'blitzSearch' },
+    { id: 'new-select', elementKey: 'checked', preferenceKey: 'useNewSelectiors' },
 ];
 
+// ? Set Default Preferences
 getStorage(
     preferenceBindings.map(({ id, elementKey, preferenceKey }) => ({
         key: preferenceKey,
@@ -166,7 +172,33 @@ function openOptions(e) {
     }
 }
 
-// ! Pro Plan Settings
+// @ WARP END
+
+
+// @ Extra Features
+
+function ToggleSelect() {
+    var chaked  = document.getElementById('new-select').checked;
+    if (chaked == true) {
+        document.getElementsByName('Device').forEach(function (el) {
+            el.style.display = 'flex';
+        });
+        document.getElementById('platform-spoofing').style.display = 'none';
+    } else {
+        document.getElementsByName('Device').forEach(function (el) {
+            el.style.display = 'none';
+        });
+        document.getElementById('platform-spoofing').style.display = 'flex';
+    }
+}
+
+// @ WARP END
+
+// function LinkSettings(e) {
+//     window.open(chrome.runtime.getURL('Settings.html'));
+// }
+
+// ! Pro Plan Settings [Working in v2.4]
 
 function PlanChange() {
     function Update_Title() {
@@ -180,11 +212,21 @@ function PlanChange() {
     }
 
     function ProFeatures() {
+        // ? Credentials
+        // ? Static Search
+        // ? Random Search
+        // ? Device Selectors
+        // ? Advertisements
+        // ? Control Panel
+        // ? Update All Changes INTO Storage
+
+        // ! OLD
         if (localStorage.getItem('Pro') !== 'true') {
             localStorage.setItem('Pro', 'true');
         }
 
-        document.body.style.height = "725px";
+        document.body.style.height = "780px";
+        // document.body.style.height = "1000px";
 
         // Static Search
         document.getElementById('Pro-Static-Delay').style.display = 'flex';
@@ -208,17 +250,19 @@ function PlanChange() {
         document.getElementById('Pro-Both').disabled = false;
         document.getElementById('Pro-Mobile').disabled = false;
         document.getElementById('Pro-Spoofing').disabled = false;
+        document.getElementById('platform-spoofing').value = 'desktop-and-mobile';
 
         // Advertisements
-        document.getElementById('Pro-Coffee-Mikeyaworski').style = 'display: none;';
-        document.getElementById('Pro-Github-Mikeyaworski').style = 'display: none;';
-        document.getElementById('Pro-Github-MeetBhingradiya').style = 'display: none;';
+        // document.getElementById('Pro-Coffee-Mikeyaworski').style = 'display: none;';
+        // document.getElementById('Pro-Github-Mikeyaworski').style = 'display: none;';
+        // document.getElementById('Pro-Github-MeetBhingradiya').style = 'display: none;';
 
         // Radio Selectors
         document.getElementById('Pro-Radio-Warp').style.display = 'flex';
+        ToggleSelect();
 
         // Icon8
-        document.getElementById('Icon8').style.marginLeft = '217px';
+        // document.getElementById('Icon8').style.marginLeft = '217px';
 
         // Warp
         document.getElementById('Total-Warp').style.display = 'flex';
@@ -233,6 +277,16 @@ function PlanChange() {
     }
 
     function FreeFeatures() {
+        // ? Credentials
+        // ? Static Search
+        // ? Random Search
+        // ? Device Selectors
+        // ? Advertisements
+        // ? Control Panel
+        // ? Update All Changes INTO Storage
+
+
+        // ! OLD
         // Credentials
         localStorage.removeItem('Pro');
 
@@ -246,7 +300,7 @@ function PlanChange() {
         // Random Search
         document.getElementById('random-search').disabled = true;
         document.getElementById('random-search').checked = false;
-        
+
         // Random Guesses
         document.getElementById('random-guesses').disabled = true;
         document.getElementById('random-guesses').checked = true;
@@ -259,20 +313,18 @@ function PlanChange() {
         document.getElementById('Pro-Both').disabled = true;
         document.getElementById('Pro-Mobile').disabled = true;
         document.getElementById('Pro-Spoofing').disabled = true;
+        document.getElementById('platform-spoofing').value = 'desktop-only';
 
         // Advertisements
-        document.getElementById('Pro-Coffee-Mikeyaworski').style = 'display: block;';
-        document.getElementById('Pro-Github-Mikeyaworski').style = 'display: block;';
-        document.getElementById('Pro-Github-MeetBhingradiya').style = 'display: block;';
+        // document.getElementById('Pro-Coffee-Mikeyaworski').style = 'display: block;';
+        // document.getElementById('Pro-Github-Mikeyaworski').style = 'display: block;';
+        // document.getElementById('Pro-Github-MeetBhingradiya').style = 'display: block;';
 
         // Icon8 Margin
-        document.getElementById('Icon8').style.marginLeft = '97px';
+        // document.getElementById('Icon8').style.marginLeft = '97px';
 
         // Radio Selectors
         document.getElementById('Pro-Radio-Warp').style.display = 'none';
-
-        // Device
-        document.getElementById('platform-spoofing').value = 'desktop-only';
 
         // Warp
         document.getElementById('Total-Warp').style.display = 'none';
@@ -294,6 +346,7 @@ function PlanChange() {
     }
 }
 
+// ? Upgrade To Pro Plan
 async function UpgradeToPro() {
     if (localStorage.getItem("Pro") === 'true') {
         alert('You Already Have Pro Version');
@@ -334,6 +387,7 @@ async function UpgradeToPro() {
     }
 }
 
+// ? Downgrade To Free Plan
 async function DowngradeToFree() {
     if (localStorage.getItem("Pro") !== null) {
         const Comfirm = confirm('Are you sure you want to downgrade to Free version?');
@@ -351,6 +405,21 @@ async function DowngradeToFree() {
     }
 }
 
+function ChangeAccentColor() {
+    var AccentColor = document.getElementById('UI-AccentColor').value
+
+}
+
+// ? Clear History Instantly
+function ClearHistory() {
+    chrome.history.deleteAll(
+        function () {
+            alert('History Cleared Sucsessfully !');
+        }
+    );
+}
+
+// ? Event Listeners For Inputs
 const changeBindings = [
     { id: 'desktop-iterations', eventType: 'input' },
     { id: 'mobile-iterations', eventType: 'input' },
@@ -365,13 +434,19 @@ const changeBindings = [
     { id: 'platform-spoofing', eventType: 'change' },
     { id: 'blitz-search', eventType: 'change' },
     { id: 'reset', eventType: 'click', fn: reset },
-    { id: 'open-options', eventType: 'click', fn: openOptions },
+    { id: 'Link-Options', eventType: 'click', fn: openOptions },
+    // { id: 'Link-Settings', eventType: 'click', fn: LinkSettings },
     { id: 'stop', eventType: 'click', fn: stopSearches },
     { id: 'Upgrade', eventType: 'click', fn: UpgradeToPro },
     { id: 'Downgrade', eventType: 'click', fn: DowngradeToFree },
+    { id: 'History', eventType: 'click', fn: ClearHistory },
+    // { id: 'new-select', eventType: 'click', fu: PlanChange },
+    // { id: 'UI-AccentColor' , eventType: 'change' , fu: ChangeAccentColor}
 ];
 
+// ? Save Changes
 changeBindings.forEach(({ id, eventType, fn = saveChanges }) => {
+    debugger
     document.getElementById(id).addEventListener(eventType, fn);
 });
 
@@ -430,6 +505,12 @@ const useState = (defaultValue) => {
 // ! Version Control System
 async function VersionControl() {
     try {
+        const Abort = new AbortController();
+        const TimeOut = setTimeout(
+            () => Abort.abort(),
+            10000
+        )
+
         var _API = `${API}${UpdateEndpoint}`
         const Data = await fetch(_API, {
             method: 'POST',
@@ -439,7 +520,8 @@ async function VersionControl() {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }
+            },
+            signal: Abort.signal
         });
         const Res = await Data.json();
         if (Res.Status === 1) {
@@ -451,13 +533,17 @@ async function VersionControl() {
                 localStorage.removeItem('Beta');
             }
             PlanChange();
+            clearTimeout(TimeOut);
         } else {
             alert(Res?.Message ? Res?.Message : Res.message);
             localStorage.removeItem('Version');
             PlanChange();
+            clearTimeout(TimeOut);
         }
     } catch (error) {
         alert('Something Went Wrong While Checking For Updates !');
+        PlanChange();
+        clearTimeout(TimeOut);
     }
 }
 
@@ -517,3 +603,30 @@ document.addEventListener('DOMContentLoaded', () => {
     Update_RadioBtn();
     PlanChange();
 });
+
+// ! Click Lable to Focus Input Field [Working in v2.4]
+
+const FocusList = [
+    {
+        lableID: 'desktop-iterations-lable',
+        inputID: 'desktop-iterations',
+    },
+    {
+        lableID: 'Pro-Static-Mobile',
+        inputID: 'mobile-iterations',
+    },
+    {
+        lableID: 'Pro-Static-Delay',
+        inputID: 'delay',
+    },
+]
+
+FocusList.forEach(({ lableID, inputID }) => {
+    document.getElementById(lableID).addEventListener('click', () => {
+        document.getElementById(inputID).focus();
+    });
+});
+
+// ! WARP END
+
+// ! File END

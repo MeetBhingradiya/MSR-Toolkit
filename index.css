@@ -1,0 +1,544 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --border-radius: 8px;
+  --color: #000000;
+  --background: #ffffff;
+  --accent-color: #9729ff;
+  --view-scrollbar: none;
+  --glass-background: rgba(238, 238, 238, 0.493);
+  --glass-background-hover: rgba(224, 224, 224, 0.536);
+  --head-boxshadow: 1px 5px 3px rgba(210, 210, 210, 0.392);
+  --divider: rgba(211, 211, 211, 0.333);
+  --ass-item-hover: #e1e1e181;
+  --btn-hover: rgba(0, 0, 0, 0.200);
+  --btn-active: rgba(0, 0, 0, 0.275);
+  --option-hover: #bdbdbdaf;
+  --option-active: #cd6aff51;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --border-radius: 8px;
+    --color: #ffffff;
+    --background: #11192a;
+    --accent-color: #9729ff;
+    --view-scrollbar: block;
+    --glass-background: rgba(17, 25, 40, 0.75);
+    --glass-background-hover: rgba(26, 35, 55, 0.55);
+    --head-boxshadow: 1px 5px 3px rgba(0, 0, 0, 0.119);
+    --divider: rgba(255, 255, 255, 0.135);
+    --ass-item-hover: rgba(0, 0, 0, 0.31);
+    --btn-hover: #ffffff14;
+    --btn-active: #ffffff23;
+    --option-hover: #ffffff27;
+    --option-active: #aa00ff83;
+  }
+}
+body {
+  background: var(--background);
+  color: #fff;
+  width: 400px;
+  height: 800px;
+  overflow: auto;
+}
+
+.GlassEffect, .UI-UX, .Foot, .ASS, .SI, .DSS, .SDSS, .DDSS {
+  backdrop-filter: blur(2px) saturate(180%);
+  -webkit-backdrop-filter: blur(2px) saturate(180%);
+  background-color: var(--glass-background);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  color: var(--color);
+}
+.GlassEffect:hover, .UI-UX:hover, .Foot:hover, .ASS:hover, .SI:hover, .DSS:hover, .SDSS:hover, .DDSS:hover {
+  background-color: var(--glass-background-hover);
+}
+
+.FULL-WIDTH, .UI-UX .Item, .ASS .Item, .SI .Item, .DSS .Item, .SDSS .Item, .DDSS .Item, .DIVIDER, .DIVIDER-3, .DIVIDER-2, .DIVIDER-1 {
+  width: 100%;
+}
+
+.FULL-HEIGHT {
+  height: 100%;
+}
+
+.FULL-WIDTH-HEIGHT, .DSS .Item label, .DSS .DSS-Item-Warp {
+  width: 100%;
+  height: 100%;
+}
+
+.WARP {
+  padding: 5px;
+}
+
+.WARP-0 {
+  padding: 0px;
+}
+
+.WARP-10, .UI-UX, .ASS, .SI, .DSS .Item label, .DSS, .SDSS, .DDSS, .CENTRE-NAV, .Head {
+  padding: 10px;
+}
+
+.WARP-M-0, .Head {
+  margin: 0px;
+}
+
+.WARP-M-10 {
+  margin: 10px;
+}
+
+.WARP-MT-3 {
+  margin-top: 10px;
+}
+
+.WARP-MT-10, .UI-UX, .ASS, .SI, .DSS {
+  margin-top: 10px;
+}
+
+.WARP-MT-55, .SDSS, .DDSS {
+  margin-top: 55px;
+}
+
+.DISPLAY-NONE, body::-webkit-scrollbar-button {
+  display: none;
+}
+
+.DISPLAY-FLEX, .UI-UX, .ASS .Item, .ASS, .DSS .DSS-Item-Warp, .CENTRE-NAV, .Head, .CENTRE, .UI-UX .Item, .SI .Item, .DSS .Item label, .DSS .Item, .SDSS .Item, .DDSS .Item {
+  display: flex;
+}
+
+.DISPLAY-BLOCK {
+  display: block;
+}
+
+.FLEX-ROW, .UI-UX .Item, .ASS .Item, .SI .Item, .DSS .Item, .DSS .DSS-Item-Warp, .SDSS .Item, .DDSS .Item {
+  flex-direction: row;
+}
+
+.FLEX-COLUMN, .UI-UX, .ASS, .DSS, .SDSS, .DDSS {
+  flex-direction: column;
+}
+
+.CENTRE, .UI-UX .Item, .SI .Item, .DSS .Item label, .DSS .Item, .SDSS .Item, .DDSS .Item {
+  justify-content: center;
+  align-items: center;
+}
+
+.CENTRE-NAV, .Head {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.SELECT-NONE, .UI-UX, .IconBtn, .ASS, .SI, .DSS .Item label, .DSS, .SDSS, .DDSS, .Head {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.GLOBLE-COLOR, .UI-UX .Item, .ASS .Item, .SI .Item, .DSS .Item label, .DSS .Item, .SDSS .Item, .DDSS .Item, a {
+  color: var(--color);
+}
+
+.GLOBLE-BACKGROUND {
+  background: var(--background);
+}
+
+.GLOBLE-ACCENT-COLOR {
+  color: var(--accent-color);
+}
+
+.GLOBLE-BORDER-RADIUS, .UI-UX, .ASS .Item, .ASS, .SI, .DSS .Item label, .DSS, .SDSS, .DDSS {
+  border-radius: var(--border-radius);
+}
+
+.GLOBLE-BOX-SHADOW, .Head {
+  box-shadow: var(--head-boxshadow);
+}
+
+.TEXT-DECORATION-NONE, a {
+  text-decoration: none;
+}
+
+.DIVIDER, .DIVIDER-3, .DIVIDER-2, .DIVIDER-1 {
+  position: relative;
+  height: 1px;
+  background: var(--divider);
+}
+
+.DIVIDER-1 {
+  margin: 10px 0px;
+}
+
+.DIVIDER-2 {
+  margin: 0px;
+}
+
+.DIVIDER-3 {
+  margin: 5px;
+}
+
+.SIZE-CONTROL {
+  width: 22px;
+  height: 22px;
+}
+
+body::-webkit-scrollbar {
+  display: var(--view-scrollbar);
+  width: 3px;
+  height: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: rgba(17, 25, 40, 0.75);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.073);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+#static-search-input-wrapper,
+#random-search-input-wrapper {
+  display: none;
+}
+
+#static-search-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+input[type=radio]:checked + label {
+  background: var(--option-active);
+  box-shadow: 0px 0px 1px 1px var(--accent-color);
+}
+
+.Head {
+  z-index: 1;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.135);
+}
+.Head .Brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.Head .Brand .Icon {
+  position: relative;
+  top: 3px;
+  width: 30px;
+  height: 30px;
+}
+.Head .Brand .Icon img {
+  width: 100%;
+  height: 100%;
+}
+.Head .Brand .Title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color);
+}
+.Head .Details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.Head .Details .Version {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.SDSS, .DDSS {
+  gap: 10px;
+}
+.SDSS input[type=number], .DDSS input[type=number] {
+  outline: none;
+  border: none;
+  width: 100px;
+  height: 29px;
+  padding: 5px 5px 5px 10px;
+  border-radius: var(--border-radius);
+}
+.SDSS input[type=number]:hover, .DDSS input[type=number]:hover {
+  border: rgba(152, 41, 255, 0.4) 1px solid;
+}
+.SDSS input[type=number]:focus, .DDSS input[type=number]:focus {
+  border: #9729ff 2px solid;
+}
+.SDSS .Item_Head, .DDSS .Item_Head {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color);
+  line-height: 1.4;
+}
+.SDSS .Item_Head img, .DDSS .Item_Head img {
+  width: 30px;
+  height: 30px;
+}
+.SDSS .Item, .DDSS .Item {
+  gap: 10px;
+  padding: 5px;
+  font-size: 14px;
+  color: var(--color);
+}
+.SDSS .Item img, .DDSS .Item img {
+  width: 30px;
+  height: 30px;
+}
+
+.DSS {
+  gap: 10px;
+}
+.DSS input[type=number] {
+  outline: none;
+  border: none;
+  width: 100px;
+  height: 29px;
+  padding: 5px 5px 5px 10px;
+  border-radius: var(--border-radius);
+}
+.DSS input[type=number]:hover {
+  border: rgba(152, 41, 255, 0.4) 1px solid;
+}
+.DSS input[type=number]:focus {
+  border: #9729ff 2px solid;
+}
+.DSS .Item_Head {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color);
+  line-height: 1.4;
+}
+.DSS .Item_Head img {
+  width: 30px;
+  height: 30px;
+}
+.DSS .Item {
+  gap: 10px;
+  padding: 5px;
+  font-size: 14px;
+  color: var(--color);
+}
+.DSS .Item label {
+  cursor: pointer;
+}
+.DSS .Item label:hover {
+  background: var(--option-hover);
+}
+.DSS .Item img {
+  width: 30px;
+  height: 30px;
+}
+
+.SI {
+  gap: 10px;
+}
+.SI .Item_Head {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color);
+  line-height: 1.4;
+}
+.SI .Item_Head img {
+  width: 30px;
+  height: 30px;
+}
+.SI .Item {
+  gap: 10px;
+  padding: 5px;
+  font-size: 14px;
+  color: var(--color);
+}
+.SI .Item img {
+  width: 30px;
+  height: 30px;
+}
+
+.ASS {
+  gap: 5px;
+}
+.ASS .Item_Head {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color);
+  line-height: 1.4;
+}
+.ASS .Item_Head img {
+  width: 30px;
+  height: 30px;
+}
+.ASS .Item {
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+  font-size: 14px;
+  color: var(--color);
+  cursor: pointer;
+  padding: 5px 10px;
+  height: 35px;
+}
+.ASS .Item:hover {
+  background: var(--ass-item-hover);
+  border: 1px solid var(--color);
+}
+.ASS .Item .Text {
+  line-height: 1.1;
+}
+.ASS .Item img {
+  width: 30px;
+  height: 30px;
+}
+.ASS .Item input[type=checkbox] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent-color);
+}
+.ASS .Item input[type=checkbox]:hover {
+  accent-color: var(--color);
+}
+
+.Foot {
+  position: fixed;
+  bottom: 0px;
+  flex: row;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  backdrop-filter: blur(5px) saturate(180%);
+  -webkit-backdrop-filter: blur(5px) saturate(180%);
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.Foot .Item {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  position: relative;
+}
+
+.IconBtn {
+  padding: 5px;
+  width: 35px;
+  height: 35px;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.IconBtn:hover {
+  background-color: var(--btn-hover);
+}
+.IconBtn:active {
+  background-color: var(--btn-active);
+}
+.IconBtn img {
+  width: 25px;
+  height: 25px;
+}
+.IconBtn-start {
+  background: url(https://img.icons8.com/fluency/128/null/play.png) no-repeat 5px center;
+  background-size: 25px;
+}
+.IconBtn-stop {
+  background: url(https://img.icons8.com/fluency/128/null/stop.png) no-repeat 5px center;
+  background-size: 25px;
+}
+.IconBtn-reset {
+  background: url(https://img.icons8.com/fluency/128/null/recurring-appointment.png) no-repeat 5px center;
+  background-size: 25px;
+}
+.IconBtn-settings {
+  background: url(https://img.icons8.com/fluency/128/null/settings.png) no-repeat 5px center;
+  background-size: 25px;
+}
+.IconBtn-Downgrade {
+  background: url(https://img.icons8.com/fluency/128/downloading-updates.png) no-repeat 5px center;
+  background-size: 25px;
+}
+.IconBtn-Upgrade {
+  background: url(https://img.icons8.com/fluency/128/downloading-updates.png) no-repeat 5px center;
+  background-size: 25px;
+  transform: rotate(180deg);
+}
+.IconBtn-History {
+  background: url(https://img.icons8.com/fluency/48/time-machine.png) no-repeat 5px center;
+  background-size: 25px;
+}
+
+.UI-UX .Item_Head {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color);
+  line-height: 1.4;
+}
+.UI-UX .Item_Head img {
+  width: 30px;
+  height: 30px;
+}
+.UI-UX .Item {
+  gap: 10px;
+  padding: 5px;
+  font-size: 14px;
+  color: var(--color);
+}
+.UI-UX .Item img {
+  width: 30px;
+  height: 30px;
+}/*# sourceMappingURL=index.css.map */

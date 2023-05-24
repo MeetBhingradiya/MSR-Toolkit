@@ -1,0 +1,570 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic)
+
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+    font-family: 'Poppins', sans-serif
+
+// @ Globle Variables
+:root
+    --border-radius: 8px
+    --color: #000000
+    --background: #ffffff
+    --accent-color: #9729ff
+    --view-scrollbar: none
+    --glass-background: rgba(238, 238, 238, 0.493)
+    --glass-background-hover: rgba(224, 224, 224, 0.536)
+    --head-boxshadow: 1px 5px 3px rgba(210, 210, 210, 0.392)
+    --divider: rgba(211, 211, 211, 0.333)
+    --ass-item-hover: #e1e1e181
+    --btn-hover: rgba(0, 0, 0, 0.200)
+    --btn-active: rgba(0, 0, 0, 0.275)
+    --option-hover: #bdbdbdaf
+    --option-active: #cd6aff51
+
+@media (prefers-color-scheme: dark)
+    :root
+        --border-radius: 8px
+        --color: #ffffff
+        --background: #11192a
+        --accent-color: #9729ff
+        --view-scrollbar: block
+        --glass-background: rgba(17, 25, 40, 0.75)
+        --glass-background-hover: rgba(26, 35, 55, 0.55)
+        --head-boxshadow: 1px 5px 3px rgba(0, 0, 0, 0.119)
+        --divider: rgba(255, 255, 255, 0.135)
+        --ass-item-hover: rgba(0, 0, 0, 0.31)
+        --btn-hover: #ffffff14
+        --btn-active: #ffffff23
+        --option-hover: #ffffff27
+        --option-active: #aa00ff83
+
+// @ Body
+
+body
+    background: var(--background)
+    color: #fff
+    width: 400px
+    height: 800px
+    overflow: auto
+
+// ! Reuseable Classes
+
+.GlassEffect
+    backdrop-filter: blur(2px) saturate(180%)
+    -webkit-backdrop-filter: blur(2px) saturate(180%)
+    background-color: var(--glass-background)
+    border: 1px solid rgba(255, 255, 255, 0.125)
+    color: var(--color)
+
+    &:hover
+        background-color: var(--glass-background-hover)
+
+.FULL-WIDTH
+    width: 100%
+
+.FULL-HEIGHT
+    height: 100%
+
+.FULL-WIDTH-HEIGHT
+    width: 100%
+    height: 100%
+
+.WARP
+    padding: 5px
+
+.WARP-0
+    padding: 0px
+
+.WARP-10
+    padding: 10px
+
+.WARP-M-0
+    margin: 0px
+
+.WARP-M-10
+    margin: 10px
+
+.WARP-MT-3
+    margin-top: 10px
+
+.WARP-MT-10
+    margin-top: 10px
+
+.WARP-MT-55
+    margin-top: 55px
+
+.DISPLAY-NONE
+    display: none
+
+.DISPLAY-FLEX
+    display: flex
+
+.DISPLAY-BLOCK
+    display: block
+
+.FLEX-ROW
+    flex-direction: row
+
+.FLEX-COLUMN
+    flex-direction: column
+
+.CENTRE
+    @extend .DISPLAY-FLEX
+    justify-content: center
+    align-items: center
+
+.CENTRE-NAV
+    @extend .DISPLAY-FLEX
+    justify-content: space-between
+    align-items: center
+    @extend .WARP-10
+
+.SELECT-NONE
+    user-select: none
+
+.GLOBLE-COLOR
+    color: var(--color)
+
+.GLOBLE-BACKGROUND
+    background: var(--background)
+
+.GLOBLE-ACCENT-COLOR
+    color: var(--accent-color)
+
+.GLOBLE-BORDER-RADIUS
+    border-radius: var(--border-radius)
+
+.GLOBLE-BOX-SHADOW
+    box-shadow: var(--head-boxshadow)
+
+.TEXT-DECORATION-NONE
+    text-decoration: none
+
+.DIVIDER
+    position: relative
+    @extend .FULL-WIDTH
+    height: 1px
+    background: var(--divider)
+
+.DIVIDER-1
+    @extend .DIVIDER
+    margin: 10px 0px
+
+.DIVIDER-2
+    @extend .DIVIDER
+    margin: 0px
+
+.DIVIDER-3
+    @extend .DIVIDER
+    margin: 5px
+
+.SIZE-CONTROL
+    width: 22px
+    height: 22px
+
+// ! ScrollBar
+body::-webkit-scrollbar
+    display: var(--view-scrollbar)
+    width: 3px
+    height: 10px
+
+body::-webkit-scrollbar-track
+    background: rgba(17, 25, 40, 0.75)
+
+body::-webkit-scrollbar-thumb
+    background: rgba(255, 255, 255, 0.073)
+
+body::-webkit-scrollbar-thumb:hover
+    background: rgba(255, 255, 255, 0.25)
+
+body::-webkit-scrollbar-button
+    @extend .DISPLAY-NONE
+
+// ! Not Reuseable Classes
+#static-search-input-wrapper,
+#random-search-input-wrapper
+    display: none
+
+#static-search-input-wrapper
+    display: flex
+    flex-direction: column
+    gap: 10px
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+    margin: 0
+
+// input[type="color"]
+//     border-radius: 50%
+//     width: 22px
+//     height: 22px
+//     border: none
+//     outline: none
+//     padding: 0px
+//     -webkit-appearance: none
+
+// ! Links
+a
+    @extend .TEXT-DECORATION-NONE
+    @extend .GLOBLE-COLOR
+
+input[type="radio"]
+    display: none
+
+input[type="radio"]:checked+label
+    background: var(--option-active)
+    box-shadow: 0px 0px 1px 1px var(--accent-color)
+
+// @ Head
+.Head
+    @extend .SELECT-NONE
+    @extend .CENTRE-NAV
+    @extend .GLOBLE-BOX-SHADOW
+    @extend .WARP-10
+    @extend .WARP-M-0
+    z-index: 1
+    position: fixed
+    top: 0px
+    width: 100%
+    border: none
+    border-bottom: 1px solid rgba(255, 255, 255, 0.135)
+
+    & .Brand
+        display: flex
+        align-items: center
+        gap: 10px
+
+    & .Brand .Icon
+        position: relative
+        top: 3px
+        width: 30px
+        height: 30px
+
+    & .Brand .Icon img
+        width: 100%
+        height: 100%
+
+    & .Brand .Title
+        font-size: 18px
+        font-weight: 600
+        color: var(--color)
+
+    & .Details
+        display: flex
+        align-items: center
+        gap: 10px
+
+    & .Details .Version
+        font-size: 12px
+        font-weight: 600
+        color: var(--accent-color)
+
+// @ Static Device Search Settings
+.SDSS
+    @extend .WARP-10
+    @extend .GlassEffect
+    @extend .WARP-MT-55
+    @extend .SELECT-NONE
+    @extend .GLOBLE-BORDER-RADIUS
+    @extend .FLEX-COLUMN
+    gap: 10px
+    input[type="number"]
+        outline: none
+        border: none
+        width: 100px
+        height: 29px
+        padding: 5px 5px 5px 10px
+        border-radius: var(--border-radius)
+
+        &:hover
+            border: #9829ff66 1px solid
+
+        &:focus
+            border: #9729ff 2px solid
+    .Item_Head
+        display: flex
+        gap: 10px
+        align-items: center
+        width: 100%
+        padding: 5px
+        border: none
+        font-size: 14px
+        font-weight: 600
+        color: var(--color)
+        line-height: 1.4
+        img
+            width: 30px
+            height: 30px
+    .Item
+        @extend .FLEX-ROW
+        @extend .GLOBLE-COLOR
+        @extend .CENTRE
+        @extend .FULL-WIDTH
+        gap: 10px
+        padding: 5px
+        font-size: 14px
+        color: var(--color)
+        img
+            width: 30px
+            height: 30px
+
+.DDSS
+    @extend .SDSS
+
+.DSS
+    @extend .WARP-MT-10
+    @extend .WARP-10
+    @extend .GlassEffect
+    @extend .SELECT-NONE
+    @extend .GLOBLE-BORDER-RADIUS
+    @extend .FLEX-COLUMN
+    gap: 10px
+    input[type="number"]
+        outline: none
+        border: none
+        width: 100px
+        height: 29px
+        padding: 5px 5px 5px 10px
+        border-radius: var(--border-radius)
+
+        &:hover
+            border: #9829ff66 1px solid
+
+        &:focus
+            border: #9729ff 2px solid
+    .Item_Head
+        display: flex
+        gap: 10px
+        align-items: center
+        width: 100%
+        padding: 5px
+        border: none
+        font-size: 14px
+        font-weight: 600
+        color: var(--color)
+        line-height: 1.4
+        img
+            width: 30px
+            height: 30px
+    .DSS-Item-Warp
+        @extend .DISPLAY-FLEX
+        @extend .FLEX-ROW
+        @extend .FULL-WIDTH-HEIGHT
+    .Item
+        @extend .FLEX-ROW
+        @extend .GLOBLE-COLOR
+        @extend .CENTRE
+        @extend .FULL-WIDTH
+        gap: 10px
+        padding: 5px
+        font-size: 14px
+        color: var(--color)
+        label
+            @extend .FULL-WIDTH-HEIGHT
+            @extend .CENTRE
+            @extend .GLOBLE-BORDER-RADIUS
+            @extend .GLOBLE-COLOR
+            @extend .WARP-10
+            @extend .SELECT-NONE
+            cursor: pointer
+            &:hover
+                background: var(--option-hover)
+        img
+            width: 30px
+            height: 30px
+
+.SI
+    @extend .WARP-MT-10
+    @extend .WARP-10
+    @extend .GlassEffect
+    @extend .SELECT-NONE
+    @extend .GLOBLE-BORDER-RADIUS
+    gap: 10px
+    .Item_Head
+        display: flex
+        gap: 10px
+        align-items: center
+        width: 100%
+        padding: 5px
+        border: none
+        font-size: 14px
+        font-weight: 600
+        color: var(--color)
+        line-height: 1.4
+        img
+            width: 30px
+            height: 30px
+    .Item
+        @extend .FLEX-ROW
+        @extend .GLOBLE-COLOR
+        @extend .CENTRE
+        @extend .FULL-WIDTH
+        gap: 10px
+        padding: 5px
+        font-size: 14px
+        color: var(--color)
+        img
+            width: 30px
+            height: 30px
+
+.ASS
+    @extend .GlassEffect
+    @extend .WARP-10
+    @extend .WARP-MT-10
+    @extend .SELECT-NONE
+    @extend .GLOBLE-BORDER-RADIUS
+    @extend .DISPLAY-FLEX
+    @extend .FLEX-COLUMN
+    gap: 5px
+    .Item_Head
+        display: flex
+        gap: 10px
+        align-items: center
+        width: 100%
+        padding: 5px
+        border: none
+        font-size: 14px
+        font-weight: 600
+        color: var(--color)
+        line-height: 1.4
+        img
+            width: 30px
+            height: 30px
+    .Item
+        @extend .DISPLAY-FLEX
+        @extend .FLEX-ROW
+        @extend .GLOBLE-COLOR
+        @extend .FULL-WIDTH
+        @extend .GLOBLE-BORDER-RADIUS
+        align-items: center
+        gap: 10px
+        padding: 5px
+        font-size: 14px
+        color: var(--color)
+        cursor: pointer
+        padding: 5px 10px
+        height: 35px
+        &:hover
+            background: var(--ass-item-hover)
+            border: 1px solid var(--color)
+        .Text
+            line-height: 1.1
+        img
+            width: 30px
+            height: 30px
+        input[type="checkbox"]
+            width: 18px
+            height: 18px
+            accent-color: var(--accent-color)
+            &:hover
+                accent-color: var(--color)
+
+.Foot
+    @extend .GlassEffect
+    position: fixed
+    bottom: 0px
+    flex: row
+    padding: 10px
+    width: 100%
+    border: none
+    backdrop-filter: blur(5px) saturate(180%)
+    -webkit-backdrop-filter: blur(5px) saturate(180%)
+
+    display: flex
+    flex-direction: row
+    gap: 10px
+    .Item
+        display: flex
+        align-items: center
+        justify-content: space-evenly
+        width: 100%
+        position: relative
+
+.IconBtn
+    padding: 5px
+    width: 35px
+    height: 35px
+    outline: none
+    border: none
+    border-radius: 8px
+    cursor: pointer
+    @extend .SELECT-NONE
+
+    &:hover
+        background-color: var(--btn-hover)
+
+    &:active
+        background-color: var(--btn-active)
+
+    & img
+        width: 25px
+        height: 25px
+
+    &-start
+        background: url(https://img.icons8.com/fluency/128/null/play.png) no-repeat 5px center
+        background-size: 25px
+
+    &-stop
+        background: url(https://img.icons8.com/fluency/128/null/stop.png) no-repeat 5px center
+        background-size: 25px
+
+    &-reset
+        background: url(https://img.icons8.com/fluency/128/null/recurring-appointment.png) no-repeat 5px center
+        background-size: 25px
+
+    &-settings
+        background: url(https://img.icons8.com/fluency/128/null/settings.png) no-repeat 5px center
+        background-size: 25px
+
+    &-Downgrade
+        background: url(https://img.icons8.com/fluency/128/downloading-updates.png) no-repeat 5px center
+        background-size: 25px
+
+    &-Upgrade
+        background: url(https://img.icons8.com/fluency/128/downloading-updates.png) no-repeat 5px center
+        background-size: 25px
+        transform: rotate(180deg)
+
+    &-History
+        background: url(https://img.icons8.com/fluency/48/time-machine.png) no-repeat 5px center
+        background-size: 25px
+
+.UI-UX
+    @extend .GlassEffect
+    @extend .WARP-10
+    @extend .WARP-MT-10
+    @extend .SELECT-NONE
+    @extend .GLOBLE-BORDER-RADIUS
+    @extend .DISPLAY-FLEX
+    @extend .FLEX-COLUMN
+    .Item_Head
+        display: flex
+        gap: 10px
+        align-items: center
+        width: 100%
+        padding: 5px
+        border: none
+        font-size: 14px
+        font-weight: 600
+        color: var(--color)
+        line-height: 1.4
+        img
+            width: 30px
+            height: 30px
+    .Item
+        @extend .FLEX-ROW
+        @extend .GLOBLE-COLOR
+        @extend .CENTRE
+        @extend .FULL-WIDTH
+        gap: 10px
+        padding: 5px
+        font-size: 14px
+        color: var(--color)
+        img
+            width: 30px
+            height: 30px

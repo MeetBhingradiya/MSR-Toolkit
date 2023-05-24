@@ -1,6 +1,9 @@
 # Microsoft Rewards Toolkit (ABS)
-- `Latest Version` v2.3
-- `Release Date` 20-5-2023 6:00 PM
+- `Latest Version` v2.4
+- `Release Date` 24-5-2023
+
+> ## Navigation
+> + [CHANGELOG](CHANGELOG.md)
 
 ## Features
 + `Auto Search` Automatically searches on Bing.com, Bing Mobile, and Bing News.
