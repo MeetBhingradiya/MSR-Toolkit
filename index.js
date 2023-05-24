@@ -122,7 +122,7 @@ const preferenceBindings = [
     { id: 'platform-spoofing', elementKey: 'value', preferenceKey: 'platformSpoofing' },
     { id: 'random-search', elementKey: 'checked', preferenceKey: 'randomSearch' },
     { id: 'blitz-search', elementKey: 'checked', preferenceKey: 'blitzSearch' },
-    { id: 'new-select', elementKey: 'checked', preferenceKey: 'useNewSelectiors' },
+    // { id: 'new-select', elementKey: 'checked', preferenceKey: 'useNewSelectiors' },
 ];
 
 // ? Set Default Preferences
@@ -177,20 +177,20 @@ function openOptions(e) {
 
 // @ Extra Features
 
-function ToggleSelect() {
-    var chaked  = document.getElementById('new-select').checked;
-    if (chaked == true) {
-        document.getElementsByName('Device').forEach(function (el) {
-            el.style.display = 'flex';
-        });
-        document.getElementById('platform-spoofing').style.display = 'none';
-    } else {
-        document.getElementsByName('Device').forEach(function (el) {
-            el.style.display = 'none';
-        });
-        document.getElementById('platform-spoofing').style.display = 'flex';
-    }
-}
+// function ToggleSelect() {
+//     var chaked  = document.getElementById('new-select').checked;
+//     if (chaked == true) {
+//         document.getElementsByName('Device').forEach(function (el) {
+//             el.style.display = 'flex';
+//         });
+//         document.getElementById('platform-spoofing').style.display = 'none';
+//     } else {
+//         document.getElementsByName('Device').forEach(function (el) {
+//             el.style.display = 'none';
+//         });
+//         document.getElementById('platform-spoofing').style.display = 'flex';
+//     }
+// }
 
 // @ WARP END
 
@@ -259,7 +259,7 @@ function PlanChange() {
 
         // Radio Selectors
         document.getElementById('Pro-Radio-Warp').style.display = 'flex';
-        ToggleSelect();
+        // ToggleSelect();
 
         // Icon8
         // document.getElementById('Icon8').style.marginLeft = '217px';
