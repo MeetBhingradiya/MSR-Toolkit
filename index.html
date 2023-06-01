@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <a class="Head GlassEffect" id="open-reward-tasks" href="https://rewards.bing.com/" target="_blank"
+    <a class="Head" id="open-reward-tasks" href="https://rewards.bing.com/" target="_blank"
         title="Go To Microsoft Rewards">
         <div class="Brand">
             <div class="Icon">
@@ -26,7 +26,7 @@
         </div>
     </a>
 
-    <div class="WARP">
+    <div class="WARP-10">
 
         <div id="static-search-input-wrapper" class="SDSS">
             <div class="Item_Head" title="Random Search Settings">
@@ -45,10 +45,12 @@
                 </div>
             </div>
             <div class="DIVIDER-1" id="Pro-Static-Divide"></div>
-            <div class="Item" style="display: none;" id="Pro-Static-Delay">
-                <img src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/external-delay-modern-dating-flaticons-flat-flat-icons-2.png"
-                    title="Delay (ms)" />
-                <input type="number" min="1000" max="40000" step="200" id="delay" style="width:150px">
+            <div class="Item">
+                <div class="Item" style="display: none; width: 250px;" id="Pro-Static-Delay">
+                    <img src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/external-delay-modern-dating-flaticons-flat-flat-icons-2.png"
+                        title="Delay (ms)" />
+                    <input type="number" min="1000" max="40000" step="200" id="delay" style="width:150px">
+                </div>
             </div>
         </div>
 
@@ -85,6 +87,13 @@
                 </div>
             </div>
         </div>
+
+        <div class="GlassEffect WARP-10 WARP-MT-10 GLOBLE-BORDER-RADIUS Notice">
+            Note: v3.0 is Comming on 15th June 2023. UI Update of MSR Toolkit. Don't Worry we ill notify you
+            when it's ready. after update this notice will be removed.
+
+            Check out Features of v3.0 at <br>> <a class="Notice" href="https://github.com/MeetBhingradiya/MSR-Toolkit/blob/Release/CHANGELOG.md" target="_blank">MSR Toolkit v3.0</a>
+        </div> 
 
         <div class="DSS" id="Pro-Radio-Warp">
             <div class="Item_Head" title="Random Search Settings">
@@ -152,24 +161,39 @@
                 Advanced Search Settings
             </div>
             <div class="DIVIDER-2"></div>
-            <label class="Item" title="Blitz Search">
-                <input id="blitz-search" type="checkbox" />
-                <div class="Text">
-                    Fast Script Injection
-                </div>
-            </label>
-            <label class="Item" id="Pro-Random-Search">
+
+            <label class="Item" id="Pro-Random-Search" name="SwitchAPI">
                 <input id="random-search" type="checkbox" />
+                <div class="Switch"></div>
                 Random Search
             </label>
-            <label class="Item" title="Auto Click Quizze Answers">
+
+
+            <label class="Item" title="Blitz Search" name="SwitchAPI">
+                <input id="blitz-search" type="checkbox" />
+                <div class="Switch"></div>
+                Fast Script Injection
+            </label>
+
+
+            <label class="Item" title="Auto Click Quizze Answers" name="SwitchAPI">
                 <input id="auto-click" type="checkbox" />
+                <div class="Switch"></div>
                 Auto Click Answers
             </label>
+
             <label class="Item" title="use Random Answers for Quizze">
                 <input id="random-guesses" type="checkbox" />
+                <div class="Switch"></div>
                 Random Guesses
             </label>
+
+            <!-- <label class="Item" title="Alert On Click Clear History">
+                <input id="Pro-disable-alerts" type="checkbox" />
+                <div class="Switch"></div>
+                Disable Alerts
+            </label> -->
+
             <!-- <label class="Item">
                 <input id="new-select" type="checkbox" />
                 useNewSelect

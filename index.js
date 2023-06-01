@@ -218,6 +218,7 @@ function PlanChange() {
         // ? Device Selectors
         // ? Advertisements
         // ? Control Panel
+        // document.getElementById('Pro-disable-alerts').checked = true;
         // ? Update All Changes INTO Storage
 
         // ! OLD
@@ -283,6 +284,7 @@ function PlanChange() {
         // ? Device Selectors
         // ? Advertisements
         // ? Control Panel
+        // document.getElementById('Pro-disable-alerts').checked = false;
         // ? Update All Changes INTO Storage
 
 
@@ -617,5 +619,19 @@ FocusList.forEach(({ lableID, inputID }) => {
 });
 
 // ! WARP END
+
+// @ WARP Switch Toggle for All Checkbox [Pending in v3.0]
+
+document.getElementsByName('SwitchAPI').forEach((element) => {
+    element.addEventListener('click', () => {
+        element.childNodes.forEach((child) => {
+            if (child.nodeName === 'INPUT' && child.type === 'checkbox') {
+                child.checked = !child.checked;
+            }
+        })
+    })
+})
+
+// @ WARP END
 
 // ! File END
