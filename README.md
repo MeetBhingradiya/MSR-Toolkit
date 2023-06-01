@@ -9,6 +9,7 @@
 + `Auto Search` Automatically searches on Bing.com, Bing Mobile, and Bing News.
 + `UI/UX` Modern UI with a dark theme.
 + ABS but Better UI Script with Pro Version.
++ Personalized UI Settings.
 
 | ABS Extension  | MSToolkit |
 | ----------- | ----------- |
