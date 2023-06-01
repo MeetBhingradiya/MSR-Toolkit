@@ -13,10 +13,10 @@ const DesktopWarp = document.getElementById('Desktop-Warp');
 const MobileWarp = document.getElementById('Mobile-Warp');
 const TotalWarp = document.getElementById('Total-Warp');
 
-const ReedemEndpoint = '/Products/MSToolkit';
-const UpdateEndpoint = '/Products/MSToolkit/Version';
+const ReedemEndpoint = '/Products/MSRToolkit';
+const UpdateEndpoint = '/Products/MSRToolkit/Version';
 
-const VER = 2.4;
+const VER = 2.5;
 const API = 'https://api.teamsm.live';
 
 // ! WARP END
@@ -226,8 +226,7 @@ function PlanChange() {
             localStorage.setItem('Pro', 'true');
         }
 
-        document.body.style.height = "780px";
-        // document.body.style.height = "1000px";
+        document.body.style.height = "1000px";
 
         // Static Search
         document.getElementById('Pro-Static-Delay').style.display = 'flex';
