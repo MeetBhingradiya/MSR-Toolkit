@@ -21,7 +21,7 @@
         </div>
         <div class="Details">
             <div class="Version" id="Pro-ID">
-                v2.4
+                v3.0
             </div>
         </div>
     </a>
@@ -88,13 +88,6 @@
             </div>
         </div>
 
-        <div class="GlassEffect WARP-10 WARP-MT-10 GLOBLE-BORDER-RADIUS Notice">
-            Note: v3.0 is Comming on 15th June 2023. UI Update of MSR Toolkit. Don't Worry we ill notify you
-            when it's ready. after update this notice will be removed.
-
-            Check out Features of v3.0 at <br>> <a class="Notice" href="https://github.com/MeetBhingradiya/MSR-Toolkit/blob/Release/CHANGELOG.md" target="_blank">MSR Toolkit v3.0</a>
-        </div> 
-
         <div class="DSS" id="Pro-Radio-Warp">
             <div class="Item_Head" title="Random Search Settings">
                 <img src="https://img.icons8.com/fluency/128/search.png" alt="search" />
@@ -140,17 +133,39 @@
                 <div class="Item" id="Desktop-Warp">
                     <img src="https://img.icons8.com/fluency/128/null/imac.png" title="Desktop Search"
                         class="SIZE-CONTROL" />
-                    <div id="iteration-count-1" class="WARP-MT-3"></div>
+                    <div id="iteration-count-1" class="WARP-MT-3 FontD"></div>
                 </div>
                 <div class="Item" id="Mobile-Warp">
                     <img src="https://img.icons8.com/fluency/128/null/iphone13.png" title="Mobile Search"
                         class="SIZE-CONTROL" />
-                    <div id="iteration-count-2" class="WARP-MT-3"></div>
+                    <div id="iteration-count-2" class="WARP-MT-3 FontD"></div>
                 </div>
                 <div class="Item" id="Total-Warp">
                     <img src="https://img.icons8.com/fluency/128/null/search.png" title="Total Search"
                         class="SIZE-CONTROL" />
-                    <div id="iteration-count-3" class="WARP-MT-3"></div>
+                    <div id="iteration-count-3" class="WARP-MT-3 FontD"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="UI-UX">
+            <div class="Item_Head">
+                <img src="https://img.icons8.com/fluency/128/cosmetic-brush.png" alt="cosmetic-brush" />
+                Personalize UI
+            </div>
+            <div class="DIVIDER-2"></div>
+
+            <div class="Colors">
+                Theme Color
+                <div class="ColorPicker" name="ColorAPI">
+                    <input type="color" name="AccentColor" id="UI-AccentColor">
+                </div>
+            </div>
+
+            <div class="Item">
+                Curve 
+                <div class="BR" name="RangeAPI">
+                    <input type="range" name="BorderRadius" id="UI-BorderRadius" min="0" max="20" value="8">
                 </div>
             </div>
         </div>
@@ -158,7 +173,7 @@
         <div class="ASS">
             <div class="Item_Head" title="Random Search Settings">
                 <img src="https://img.icons8.com/fluency/128/null/settings.png" alt="search" />
-                Advanced Search Settings
+                Advanced Search Settings [Limited Time]
             </div>
             <div class="DIVIDER-2"></div>
 
@@ -175,37 +190,57 @@
                 Fast Script Injection
             </label>
 
-
             <label class="Item" title="Auto Click Quizze Answers" name="SwitchAPI">
                 <input id="auto-click" type="checkbox" />
                 <div class="Switch"></div>
                 Auto Click Answers
             </label>
 
-            <label class="Item" title="use Random Answers for Quizze">
+            <label class="Item" title="use Random Answers for Quizze" name="SwitchAPI">
                 <input id="random-guesses" type="checkbox" />
                 <div class="Switch"></div>
                 Random Guesses
             </label>
 
-            <!-- <label class="Item" title="Alert On Click Clear History">
+            <label class="Item" title="Alert On Click Clear History" name="SwitchAPI">
                 <input id="Pro-disable-alerts" type="checkbox" />
                 <div class="Switch"></div>
                 Disable Alerts
-            </label> -->
-
-            <!-- <label class="Item">
-                <input id="new-select" type="checkbox" />
-                useNewSelect
-            </label> -->
-            <!-- <label class="Item">
-                <input id="MSR-Mini" type="checkbox" />
-                Mini Ui
             </label>
-            <label class="Item">
+
+            <label class="Item" name="SwitchAPI">
+                <input id="new-select" type="checkbox" />
+                <div class="Switch"></div>
+                New Select
+            </label>
+
+            <label class="Item" name="SwitchAPI">
                 <input id="MSR-Mini" type="checkbox" />
+                <div class="Switch"></div>
+                Mini MSR
+            </label>
+
+            <label class="Item" name="SwitchAPI">
+                <input id="UI-UX" type="checkbox" />
+                <div class="Switch"></div>
                 Personalize
-            </label> -->
+            </label>
+
+            <label class="Item" name="SwitchAPI">
+                <input id="Shortcuts" type="checkbox" />
+                <div class="Switch"></div>
+                Shortcuts
+            </label>
+            
+            <label class="Item" name="SwitchAPI">
+                <input id="Presets" type="checkbox" />
+                <div class="Switch"></div>
+                Load Presets
+                <div id="ActivePreset" class="FontD">
+                    [Default]
+                </div>
+            </label>
+
         </div>
 
         <div class="SelectWarp GlassEffect WARP-MT-10" style="display: none;">
@@ -217,19 +252,6 @@
             </select>
         </div>
 
-        <!-- <div class="UI-UX">
-            <div class="Item_Head">
-                <img src="https://img.icons8.com/fluency/128/cosmetic-brush.png" alt="cosmetic-brush" />
-                Personalize UI
-            </div>
-            <div class="DIVIDER-2"></div>
-            <div class="Item">
-                <input type="color" name="AccentColor" id="UI-AccentColor">
-                <div class="Text">
-                    AccentColor
-                </div> 
-            </div>
-        </div> -->
 
         <!-- <div class="oldFoot GlassEffect">
             <a href="https://Github.com/MeetBhingradiya" class="FootItem" title="MeetBhingradiya"

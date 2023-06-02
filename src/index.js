@@ -1,6 +1,6 @@
 const port = chrome.runtime.connect();
 
-// ! CONSTANTS [Working in v2.4]
+// ! CONSTANTS [Working in v2.5]
 const staticSearchesWrapper = document.getElementById('static-search-input-wrapper');
 const randomSearchesWrapper = document.getElementById('random-search-input-wrapper');
 
@@ -17,7 +17,9 @@ const ReedemEndpoint = '/Products/MSRToolkit';
 const UpdateEndpoint = '/Products/MSRToolkit/Version';
 
 const VER = 2.5;
-const API = 'https://api.teamsm.live';
+// const API = 'https://api.teamsm.live';
+
+const API = 'http://localhost:2003';
 
 // ! WARP END
 
@@ -226,7 +228,7 @@ function PlanChange() {
             localStorage.setItem('Pro', 'true');
         }
 
-        document.body.style.height = "1000px";
+        document.body.style.height = "1200px";
 
         // Static Search
         document.getElementById('Pro-Static-Delay').style.display = 'flex';
@@ -278,18 +280,18 @@ function PlanChange() {
 
     function FreeFeatures() {
         // ? Credentials
+        localStorage.removeItem('Pro');
         // ? Static Search
         // ? Random Search
         // ? Device Selectors
         // ? Advertisements
         // ? Control Panel
-        // document.getElementById('Pro-disable-alerts').checked = false;
+        document.getElementById('Pro-disable-alerts').checked = false;
         // ? Update All Changes INTO Storage
 
 
         // ! OLD
         // Credentials
-        localStorage.removeItem('Pro');
 
         document.body.style.height = "520px";
 
@@ -406,11 +408,6 @@ async function DowngradeToFree() {
     }
 }
 
-function ChangeAccentColor() {
-    var AccentColor = document.getElementById('UI-AccentColor').value
-
-}
-
 // ? Clear History Instantly
 function ClearHistory() {
     chrome.history.deleteAll(
@@ -441,8 +438,6 @@ const changeBindings = [
     { id: 'Upgrade', eventType: 'click', fn: UpgradeToPro },
     { id: 'Downgrade', eventType: 'click', fn: DowngradeToFree },
     { id: 'History', eventType: 'click', fn: ClearHistory },
-    // { id: 'new-select', eventType: 'click', fu: PlanChange },
-    // { id: 'UI-AccentColor' , eventType: 'change' , fu: ChangeAccentColor}
 ];
 
 // ? Save Changes
@@ -532,7 +527,7 @@ async function VersionControl() {
             PlanChange();
         }
     } catch (error) {
-        alert('Something Went Wrong While Checking For Updates !');
+        // alert('Something Went Wrong While Checking For Updates !');
         PlanChange();
     }
 }
@@ -619,7 +614,7 @@ FocusList.forEach(({ lableID, inputID }) => {
 
 // ! WARP END
 
-// @ WARP Switch Toggle for All Checkbox [Pending in v3.0]
+// @ WARP Switch Toggle for All Checkbox [Working in v2.5]
 
 document.getElementsByName('SwitchAPI').forEach((element) => {
     element.addEventListener('click', () => {
@@ -632,5 +627,37 @@ document.getElementsByName('SwitchAPI').forEach((element) => {
 })
 
 // @ WARP END
+
+// ? Color Picker API [Pending in v2.5]
+
+document.getElementsByName('ColorAPI').forEach((element) => {
+    element.addEventListener('click', () => {
+        element.childNodes.forEach((child) => {
+            if (child.nodeName === 'INPUT' && child.type === 'color') {
+                child.click();
+            }
+        })
+    })
+
+    element.childNodes.forEach((child) => {
+        if (child.nodeName === 'INPUT' && child.type === 'color') {
+            child.addEventListener('change', () => {
+                document.body.style = `--accent-color: ${child.value}`
+            })
+        }
+    });
+});
+
+document.getElementsByName('RangeAPI').forEach((element) => {
+    element.childNodes.forEach((child) => {
+        if (child.nodeName === 'INPUT' && child.type === 'range') {
+            child.addEventListener('change', () => {
+                document.body.style = `--border-radius: ${child.value}px`
+            })
+        }
+    });
+});
+
+
 
 // ! File END

@@ -1,0 +1,12 @@
+{
+    "ext": "js,html,sass",
+    "ignore": [
+        ".git",
+        "node_modules/*",
+        "MSR_ToolkitProduction/*",
+        "MSR_Toolkit_v2.5/*"
+    ],
+    "execMap": {
+        "js": "yarn build"
+    }
+}

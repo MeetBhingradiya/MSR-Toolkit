@@ -230,14 +230,14 @@ input[type="number"]::-webkit-outer-spin-button
 input[type="number"]
     font-size: 1.5rem
 
-// input[type="color"]
-//     border-radius: 50%
-//     width: 22px
-//     height: 22px
-//     border: none
-//     outline: none
-//     padding: 0px
-//     -webkit-appearance: none
+input[type="color"]
+    border-radius: 50%
+    width: 22px
+    height: 22px
+    border: none
+    outline: none
+    padding: 0px
+    -webkit-appearance: none
 
 input[type="radio"]
     display: none
@@ -348,6 +348,7 @@ a
         color: var(--color)
         .Item
             border-radius: 8px
+            cursor: pointer
             &:hover
                 background-color: #FA8BFF
                 background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%)
@@ -442,7 +443,7 @@ a
         font-size: 14px
         font-weight: 600
         color: var(--color)
-        line-height: 1.4
+        line-height: 1.2
         img
             width: 30px
             height: 30px
@@ -453,11 +454,14 @@ a
         @extend .FULL-WIDTH
         gap: 10px
         padding: 5px
-        font-size: 14px
-        color: var(--color)
         img
             width: 30px
             height: 30px
+
+.FontD
+    font-size: 14px
+    font-weight: 400
+    color: var(--color)
 
 .ASS
     @extend .GlassEffect
@@ -592,6 +596,7 @@ a
     @extend .GLOBLE-BORDER-RADIUS
     @extend .DISPLAY-FLEX
     @extend .FLEX-COLUMN
+    animation: var(--ui-ux-direcion) var(--ui-ux) ease-in
     .Item_Head
         display: flex
         gap: 10px
@@ -607,10 +612,11 @@ a
             width: 30px
             height: 30px
     .Item
+        @extend .DISPLAY-FLEX
         @extend .FLEX-ROW
         @extend .GLOBLE-COLOR
-        @extend .CENTRE
         @extend .FULL-WIDTH
+        @extend .CENTRE-NAV
         gap: 10px
         padding: 5px
         font-size: 14px
@@ -618,6 +624,35 @@ a
         img
             width: 30px
             height: 30px
+    .Colors
+        @extend .DISPLAY-FLEX
+        @extend .FLEX-ROW
+        @extend .GLOBLE-COLOR
+        @extend .FULL-WIDTH
+        @extend .CENTRE-NAV
+        gap: 10px
+        padding: 5px
+        font-size: 15px
+        color: var(--color)
+
+// @ Color Picker API
+
+.ColorPicker
+    width: 25px
+    height: 25px
+    cursor: pointer
+    background: var(--accent-color)
+    @extend .GLOBLE-BORDER-RADIUS
+    @extend .WARP-MT-10
+    input[type="color"]
+        opacity: 0
+        cursor: pointer
+        display: block
+        @extend .FULL-WIDTH-HEIGHT
+        @extend .GLOBLE-BORDER-RADIUS
+        border: none
+
+// @ Notice API
 
 .Notice
     font-size: 14px

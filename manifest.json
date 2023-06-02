@@ -2,22 +2,22 @@
     "background": {
         "persistent": true,
         "scripts": [
-            "constants.js",
-            "utils.js",
-            "data.js",
-            "query-templates.js",
-            "chrome-utils.js",
-            "background-scripts/prefs.js",
-            "background-scripts/queries.js",
-            "background-scripts/reminder.js",
-            "background-scripts/spoof.js",
-            "background-scripts/search.js",
-            "background-scripts/schedule.js",
-            "background-scripts/messages.js"
+            "src/constants.js",
+            "src/utils.js",
+            "src/data.js",
+            "src/query-templates.js",
+            "src/chrome-utils.js",
+            "src/background-scripts/prefs.js",
+            "src/background-scripts/queries.js",
+            "src/background-scripts/reminder.js",
+            "src/background-scripts/spoof.js",
+            "src/background-scripts/search.js",
+            "src/background-scripts/schedule.js",
+            "src/background-scripts/messages.js"
         ]
     },
     "browser_action": {
-        "default_popup": "index.html"
+        "default_popup": "src/index.html"
     },
     "commands": {
         "start-searches": {
@@ -31,13 +31,13 @@
     "content_scripts": [
         {
             "js": [
-                "constants.js",
-                "utils.js",
-                "chrome-utils.js",
-                "content-scripts/script-injector.js",
-                "content-scripts/window-variable-grabber/injector.js",
-                "content-scripts/quiz-answer-hash-function.js",
-                "content-scripts/main.js"
+                "src/constants.js",
+                "src/utils.js",
+                "src/chrome-utils.js",
+                "src/content-scripts/script-injector.js",
+                "src/content-scripts/window-variable-grabber/injector.js",
+                "src/content-scripts/quiz-answer-hash-function.js",
+                "src/content-scripts/main.js"
             ],
             "matches": [
                 "https://*.bing.com/*"
@@ -45,9 +45,9 @@
         },
         {
             "js": [
-                "constants.js",
-                "content-scripts/script-injector.js",
-                "content-scripts/window-open-injection/injector.js"
+                "src/constants.js",
+                "src/content-scripts/script-injector.js",
+                "src/content-scripts/window-open-injection/injector.js"
             ],
             "matches": [
                 "https://account.microsoft.com/rewards/*"
@@ -57,9 +57,9 @@
     "content_security_policy": "script-src 'self' https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js; object-src 'self'",
     "description": "Automatically perform daily searches and collect bonus reward points.",
     "icons": {
-        "128": "icons/icon128.png",
-        "16": "icons/icon16.png",
-        "48": "icons/icon48.png"
+        "128": "src/icons/icon128.png",
+        "16": "src/icons/icon16.png",
+        "48": "src/icons/icon48.png"
     },
     "incognito": "split",
     "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgqZsbeN9Y3y1nC3ir687IddBCs75hicFKfQATASGIEzSUDh6UIL+zLJVJzZwwrYOByHUXY7ZcFT4Yx0xEOTCnGPYWScNVXm5Mrnd8lrAM+IJ8dqd1yOXb6MQw3jYNUPclCtptKyK0aptzj4ebWsBC5NvJclWkdvTS/BwR1POvJP3CmHT/9h2r/VWn5ZCb4rm5BlW2dVr9SjeNC+StuZPuC6Ws0nrFEJyeof9RnsW0jGO05jg+Yhe887vtgbDY7oGrNWRKxt7dIJ3lols1/Ynn5seHIi2l3SczgUpYotkt6T5PlMWIQqW/6ZjxJEYGPhainHSlNoLnyQUzrESKUsd4QIDAQAB",
@@ -67,7 +67,7 @@
     "name": "MSR Toolkit",
     "options_ui": {
         "open_in_tab": false,
-        "page": "options.html"
+        "page": "src/options.html"
     },
     "permissions": [
         "https://*.bing.com/*",
@@ -84,8 +84,8 @@
     "update_url": "https://clients2.google.com/service/update2/crx",
     "version": "1.0",
     "web_accessible_resources": [
-        "constants.js",
-        "content-scripts/window-variable-grabber/main.js",
-        "content-scripts/window-open-injection/main.js"
+        "src/constants.js",
+        "src/content-scripts/window-variable-grabber/main.js",
+        "src/content-scripts/window-open-injection/main.js"
     ]
 }

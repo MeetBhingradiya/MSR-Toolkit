@@ -3,14 +3,18 @@
 > + [README](README.md)
 ## [v3.0] - 15-06-2023 (Unreleased)
 + Personalization System Introduced
-+ New Advanced Settings Added
++ 6 New Advanced Settings Added
++ Advanced Settings Begin Moved to New Page
 + Can Disable Alerts
 + Can Disable Animations
 + Anccent Color Added
++ Instant Build System    
+
 ## [v2.5] - 01-06-2023
 + Switches Added
 + Animations Added when Popup Extension
 + Bugs Fixed
+
 ## [v2.4] - 24/05/2023
 + UI Interface Updated 
 + Matirial Design
