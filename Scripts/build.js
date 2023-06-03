@@ -16,13 +16,26 @@ const Config = {
     Delete_Old_Folders: false,
 }
 
+const SassFiles = [
+    'index.sass',
+    'Settings.sass',
+    './Styles/main.sass',
+    './Styles/Globle.sass',
+]
+
+const Exclude_Files = [
+    ...SassFiles,
+]
+
+
+
 function OutConfig() {
     return {
         Name: Config.Name,
         Version: Config.Version,
         Source: path.join(__dirname, '..', Config.Source),
 
-        OutputDir: path.join(__dirname,'..', `${Config.Name}_v${Config.Version}`),
+        OutputDir: path.join(__dirname, '..', `${Config.Name}_v${Config.Version}`),
         OutputFile: path.join(__dirname, '..', `${Config.Name}_v${Config.Version}.zip`),
 
         CloudDir: path.join(__dirname, `../../../TeamSM/Development/API/Cloud/`),
@@ -35,7 +48,6 @@ function OutConfig() {
         LocalDir: path.join(__dirname, '..', 'MSR_ToolkitProduction'),
     }
 }
-
 
 // @ File System API
 
@@ -69,23 +81,23 @@ function DeleteFile(file) {
     }
 }
 
-// Copy Files and Folders with Excludes
 function CopyFiles(src, dest, excludes = []) {
     if (fs.existsSync(src)) {
         fs.readdirSync(src).forEach((file, index) => {
             const curPath = path.join(src, file);
             const destPath = path.join(dest, file);
             if (fs.lstatSync(curPath).isDirectory()) {
-                if (!excludes.includes(file)) {
-                    CopyDir(curPath, destPath);
-                }
+                CopyDir(curPath, destPath);
             } else {
-                if (!excludes.includes(file)) {
-                    fs.copyFileSync(curPath, destPath);
-                }
+                fs.copyFileSync(curPath, destPath);
             }
         });
     }
+
+    // ? Delete Excludes Files
+    excludes.forEach((file) => {
+        DeleteFile(path.join(dest, file));
+    });
 }
 
 function CopyDir(src, dest) {
@@ -145,7 +157,7 @@ async function Build() {
 
     // ? Copy Source to OutputDir Exclude .sass
     console.log('[MSR Toolkit] [Compile] Copying Source to OutputDir...')
-    FsApi.CopyFiles(OutConfig().Source, OutConfig().OutputDir, ['index.sass']);
+    FsApi.CopyFiles(OutConfig().Source, OutConfig().OutputDir, Exclude_Files);
 
     // ? Update Version
     console.log('[MSR Toolkit] [Worker] Updating Index.js Version...')
@@ -154,17 +166,23 @@ async function Build() {
     const IndexJS_NewContent = IndexJS_Content.replace(RegExp_Version, Config.Version);
     fs.writeFileSync(path.join(OutConfig().OutputDir, 'index.js'), IndexJS_NewContent);
 
+    await Sleep(100);
+
+
     // ? Compile Sass
     console.log('[MSR Toolkit] [Worker] Compiling Sass...')
-    const sassResult = sass.renderSync({
-        file: path.join(OutConfig().Source, 'index.sass'),
-        outFile: path.join(OutConfig().OutputDir, 'index.css'),
-        outputStyle: 'compressed',
-        sourceMap: false,
-    });
 
-    // ? Write Compiled Sass to OutputDir
-    fs.writeFileSync(path.join(OutConfig().OutputDir, 'index.css'), sassResult.css);
+    SassFiles.forEach((file) => {
+        const sassResult = sass.renderSync({
+            file: path.join(OutConfig().Source, file),
+            outFile: path.join(OutConfig().OutputDir, file.replace('.sass', '.css')),
+            outputStyle: 'compressed',
+            sourceMap: false,
+        });
+
+        // ? Write Compiled Sass to OutputDir
+        fs.writeFileSync(path.join(OutConfig().OutputDir, file.replace('.sass', '.css')), sassResult.css);
+    })
 
     // ? Compile Manifest With replace all src/ to " "
     console.log('[MSR Toolkit] [Compile] Compiling Manifest...')
@@ -219,7 +237,7 @@ async function Build() {
     await Sleep(100);
 
     // ? Delete All Old Version Folders
-    if(Config.Delete_Old_Folders) {
+    if (Config.Delete_Old_Folders) {
         console.log('[MSR Toolkit] [Worker] Deleting Old Folders...')
         fs.readdirSync(OutConfig().RootDir).forEach((file, index) => {
             const curPath = path.join(OutConfig().RootDir, file);

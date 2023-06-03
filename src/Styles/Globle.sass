@@ -1,0 +1,112 @@
+.GlassEffect
+    backdrop-filter: blur(2px) saturate(180%)
+    -webkit-backdrop-filter: blur(2px) saturate(180%)
+    background-color: var(--glass-background)
+    border: 1px solid rgba(255, 255, 255, 0.125)
+    color: var(--color)
+
+    &:hover
+        background-color: var(--glass-background-hover)
+
+.FULL-WIDTH
+    width: 100%
+
+.FULL-HEIGHT
+    height: 100%
+
+.FULL-WIDTH-HEIGHT
+    width: 100%
+    height: 100%
+
+.WARP-0
+    padding: 0px
+
+.WARP-5
+    padding: 5px
+
+.WARP-10
+    padding: 10px
+
+.WARP-M-0
+    margin: 0px
+
+.WARP-M-10
+    margin: 10px
+
+.WARP-MT-3
+    margin-top: 10px
+
+.WARP-MT-10
+    margin-top: 10px
+
+.WARP-MT-55
+    margin-top: 55px
+
+.DISPLAY-NONE
+    display: none
+
+.DISPLAY-FLEX
+    display: flex
+
+.DISPLAY-BLOCK
+    display: block
+
+.FLEX-ROW
+    flex-direction: row
+
+.FLEX-COLUMN
+    flex-direction: column
+
+.CENTRE
+    @extend .DISPLAY-FLEX
+    justify-content: center
+    align-items: center
+
+.CENTRE-NAV
+    @extend .DISPLAY-FLEX
+    justify-content: space-between
+    align-items: center
+    @extend .WARP-10
+
+.SELECT-NONE
+    user-select: none
+
+.GLOBLE-COLOR
+    color: var(--color)
+
+.GLOBLE-BACKGROUND
+    background: var(--background)
+
+.GLOBLE-ACCENT-COLOR
+    color: var(--accent-color)
+
+.GLOBLE-BORDER-RADIUS
+    border-radius: var(--border-radius)
+
+.GLOBLE-BOX-SHADOW
+    box-shadow: var(--head-boxshadow)
+
+.TEXT-DECORATION-NONE
+    text-decoration: none
+
+.DIVIDER
+    position: relative
+    @extend .FULL-WIDTH
+    height: 1px
+    background: var(--divider)
+
+.DIVIDER-1
+    @extend .DIVIDER
+    margin: 10px 0px
+
+.DIVIDER-2
+    @extend .DIVIDER
+    margin: 0px
+
+.DIVIDER-3
+    @extend .DIVIDER
+    margin: 5px
+
+.SIZE-CONTROL
+    width: 22px
+    height: 22px

@@ -659,5 +659,44 @@ document.getElementsByName('RangeAPI').forEach((element) => {
 });
 
 
+// const Json = {
+//     Static_Search_Settings: {
+//         Desktop: 45,
+//         Mobile: 30,
+//         Delay: 1000
+//     },
+//     Dynamic_Search_Settings: {
+//         Searches: {
+//             Min: 15,
+//             Max: 45
+//         },
+//         Delay: {
+//             Min: 1000,
+//             Max: 3000
+//         },
+//     },
+//     Device : "None", // "Desktop" | "Mobile" | "Both" | "None"
+//     Shortcuts:{
+//         Start_Search: "Control + Shift + S",
+//         Stop_Search: "Control + Shift + X",
+//         Toggle_Device: "Control + Shift + D",
+//     },
+//     Advanced: {
+//         Dynamic_Search: false,
+//         Fast_Script_Injection: false,
+//         Auto_Click: false,
+//         Random_Guesses: false,
+//         Disable_Alerts: false,
+//         Disable_Animations: false,
+//         New_Device_Selector: false,
+//         MiniMSR: false,
+//         PersonalizeUI: false,
+//         Shortcuts: false,
+//         Load_Preset: false,
+//         Dark_Mode_Only: false,
+//     }
+// }
+
+
 
 // ! File END

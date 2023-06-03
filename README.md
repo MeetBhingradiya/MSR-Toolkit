@@ -1,9 +1,20 @@
 # Microsoft Rewards Toolkit (ABS)
++ Best Manually Search Bot for Microsoft Rewards.
+
+> ## Version
 - `Latest Version` v2.5
 - `Release Date` 01-06-2023
+- `Beta` v3.0
 
 > ## Navigation
 > + [CHANGELOG](CHANGELOG.md)
+
+> ## Notice of v3.0 `Beta`
++ `v3.0` is coming soon with new features and UI.
++ 40% of work is done and we are working on it with 72 hours of continuous work to make it live as soon as possible.
++ v3.0 will be delayed due to some features and bugs discovered in v2.5.
++ this delay beetwen 3 to 5 days.
++ WE ARE MOVING to REACT.JS for better UI and UX and also for better Performance with Functionality.
 
 ## Features
 + `Auto Search` Automatically searches on Bing.com, Bing Mobile, and Bing News.
