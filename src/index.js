@@ -16,10 +16,10 @@ const TotalWarp = document.getElementById('Total-Warp');
 const ReedemEndpoint = '/Products/MSRToolkit';
 const UpdateEndpoint = '/Products/MSRToolkit/Version';
 
-const VER = 2.5;
-// const API = 'https://api.teamsm.live';
+const VER = 2.6;
+const API = 'https://api.teamsm.live';
 
-const API = 'http://localhost:2003';
+// const API = 'http://localhost:2003';
 
 // ! WARP END
 

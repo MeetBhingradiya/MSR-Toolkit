@@ -8,7 +8,8 @@
 + Can Disable Alerts
 + Can Disable Animations
 + Anccent Color Added
-+ Instant Build System    
++ Instant Build System
++ Migration to React.js/Webpack  
 
 ## [v2.5] - 01-06-2023
 + Switches Added

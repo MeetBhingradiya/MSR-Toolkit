@@ -5,12 +5,12 @@ const sass = require('sass');
 
 const Config = {
     Name: 'MSR_Toolkit',
-    Version: 2.5,
-    Old_Version: 2.4,
+    Version: 2.6,
+    Old_Version: 2.5,
 
     Source: 'src',
     Delete_OutputDir: true,
-    Replace_Cloudbuild: false,
+    Replace_Cloudbuild: true,
     Create_Zip: false,
     Delete_Old_Zip: false,
     Delete_Old_Folders: false,

@@ -2,7 +2,7 @@
 + Best Manually Search Bot for Microsoft Rewards.
 
 > ## Version
-- `Latest Version` v2.5
+- `Latest Version` v2.6
 - `Release Date` 01-06-2023
 - `Beta` v3.0
 
