@@ -1,6 +1,6 @@
 {
     "name": "msr-toolkit",
-    "version": "2.5.0",
+    "version": "2.7.0",
     "description": "None",
     "main": "Scripts/css.js",
     "scripts": {

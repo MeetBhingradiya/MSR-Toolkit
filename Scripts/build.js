@@ -5,8 +5,8 @@ const sass = require('sass');
 
 const Config = {
     Name: 'MSR_Toolkit',
-    Version: 2.6,
-    Old_Version: 2.5,
+    Version: 2.7,
+    Old_Version: 2.6,
 
     Source: 'src',
     Delete_OutputDir: true,

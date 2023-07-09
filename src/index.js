@@ -16,14 +16,12 @@ const TotalWarp = document.getElementById('Total-Warp');
 const ReedemEndpoint = '/Products/MSRToolkit';
 const UpdateEndpoint = '/Products/MSRToolkit/Version';
 
-const VER = 2.6;
+const VER = 2.7;
 const API = 'https://api.teamsm.live';
 
 // const API = 'http://localhost:2003';
 
 // ! WARP END
-
-
 
 // @ OLD Auto Bing Search [ABS Script] - Modified by @TeamSM/MeetBhingradiya
 
@@ -363,9 +361,8 @@ async function UpgradeToPro() {
             PROMO: UserInputs,
             VER: VER,
         })
-
         try {
-            var API = await fetch('https://api.teamsm.live/Products/MSToolkit', {
+            var _API = await fetch(`${API}${ReedemEndpoint}`, {
                 method: 'POST',
                 body,
                 headers: {
@@ -373,7 +370,7 @@ async function UpgradeToPro() {
                     'Content-Type': 'application/json'
                 }
             });
-            var Res = await API.json();
+            var Res = await _API.json();
 
             if (Res.Status === 1) {
                 localStorage.setItem('Pro', 'true');
